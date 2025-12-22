@@ -24,13 +24,9 @@ class Event extends Model
         'published_at',
     ];
 
+    // relasi ke user (penyelenggara)
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function tickets()
-    {
-        return $this->hasMany(Ticket::class);
     }
 }
