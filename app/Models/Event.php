@@ -9,6 +9,9 @@ class Event extends Model
 {
     use SoftDeletes;
 
+    /**
+     * Field yang boleh diisi secara mass-assignment
+     */
     protected $fillable = [
         'user_id',
         'title',
@@ -24,9 +27,51 @@ class Event extends Model
         'published_at',
     ];
 
-    // relasi ke user (penyelenggara)
+    /**
+     * Relasi ke user sebagai penyelenggara event
+     */
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Relasi ke tiket
+     * (digunakan oleh modul manajemen tiket)
+     */
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
+
+    /**
+     * Scope untuk event yang sudah dipublish
+     * Digunakan untuk tampilan publik
+     */
+    public function scopePublished($query)
+    {
+        return $query->where('status', 'published');
+    }
+
+    /**
+     * Label status event
+     * Berguna untuk API response dan tampilan web
+     */
+    public function getStatusLabelAttribute()
+    {
+        return match ($this->status) {
+            'draft' => 'Draft',
+            'published' => 'Dipublikasikan',
+            'cancelled' => 'Dibatalkan',
+            default => 'Tidak diketahui',
+        };
+    }
+
+    /**
+     * Mengecek apakah event sudah dipublish
+     */
+    public function isPublished(): bool
+    {
+        return $this->status === 'published';
     }
 }
