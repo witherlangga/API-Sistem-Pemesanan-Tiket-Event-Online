@@ -29,4 +29,9 @@ class Event extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function isPublished(): bool
+    {
+        return $this->status === 'published';
+    }
 }
