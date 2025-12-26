@@ -6,19 +6,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, HasApiTokens;
-
-    const ROLE_CUSTOMER = 'customer';
-    const ROLE_ORGANIZER = 'organizer';
-
-    const STATUS_ACTIVE = 'active';
-    const STATUS_INACTIVE = 'inactive';
-    const STATUS_SUSPENDED = 'suspended';
+    use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -29,12 +21,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'phone',
-        'role',
-        'status',
-        'is_verified',
-        'profile_picture',
-        'bio',
     ];
 
     /**
@@ -57,39 +43,6 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
-            'is_verified' => 'boolean',
         ];
-    }
-
-    /**
-     * Periksa apakah user adalah customer
-     */
-    public function isCustomer(): bool
-    {
-        return $this->role === self::ROLE_CUSTOMER;
-    }
-
-    /**
-     * Periksa apakah user adalah organizer
-     */
-    public function isOrganizer(): bool
-    {
-        return $this->role === self::ROLE_ORGANIZER;
-    }
-
-    /**
-     * Periksa apakah user aktif
-     */
-    public function isActive(): bool
-    {
-        return $this->status === self::STATUS_ACTIVE;
-    }
-
-    /**
-     * Periksa apakah user terverifikasi
-     */
-    public function isVerified(): bool
-    {
-        return $this->is_verified === true;
     }
 }

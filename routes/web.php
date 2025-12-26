@@ -4,14 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Event;
 use App\Http\Controllers\EventWebController;
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/api-tester', function () {
-    return view('api-tester');
-});
 Route::get('/', function () {
     return view('welcome');
 });
