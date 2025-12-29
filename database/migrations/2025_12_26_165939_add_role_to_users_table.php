@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             // Menambah kolom 'role' dengan tipe enum untuk membatasi nilai
             // Nilai default: 'customer' (karena sebagian besar user adalah customer)
-            $table->enum('role', ['organizer', 'customer'])->default('customer')->after('password');
-            
-            // Menambah indeks untuk performa query berdasarkan role
-            $table->index('role');
+            if (!Schema::hasColumn('users', 'role')) {
+                $table->enum('role', ['organizer', 'customer'])->default('customer')->after('password');
+                
+                // Menambah indeks untuk performa query berdasarkan role
+                $table->index('role');
+            }
         });
     }
 

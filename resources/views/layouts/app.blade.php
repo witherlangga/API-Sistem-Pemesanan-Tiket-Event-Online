@@ -4,11 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-        @vite(['resources/css/app.css'])
-    @else
-        <link rel="stylesheet" href="/resources/css/app.css">
-    @endif
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen bg-[#FDFDFC] p-6">
     @unless(request()->routeIs('login') || request()->routeIs('register'))
