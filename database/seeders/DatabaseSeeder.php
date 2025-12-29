@@ -21,5 +21,11 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        // Create a few organizers for seeding events
+        User::factory(3)->create([ 'role' => 'organizer' ]);
+
+        // Seed 20 events with posters
+        $this->call(EventSeeder::class);
     }
 }

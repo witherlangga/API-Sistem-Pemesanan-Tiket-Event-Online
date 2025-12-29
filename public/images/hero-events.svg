@@ -1,0 +1,11 @@
+<svg width="600" height="300" viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="300" rx="16" fill="#EFF6FF"/>
+  <g transform="translate(40,40)">
+    <rect x="0" y="0" width="220" height="80" rx="8" fill="#DBEAFE" />
+    <rect x="240" y="0" width="220" height="80" rx="8" fill="#E9D5FF" />
+    <rect x="0" y="100" width="460" height="140" rx="10" fill="#FEF3C7" />
+    <circle cx="380" cy="60" r="34" fill="#60A5FA" />
+    <circle cx="420" cy="90" r="18" fill="#7C3AED" />
+  </g>
+  <text x="40" y="220" font-family="sans-serif" font-size="24" fill="#1F2937">Professional event management</text>
+</svg>

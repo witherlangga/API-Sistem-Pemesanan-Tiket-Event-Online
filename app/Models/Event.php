@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\User;
 use App\Models\Ticket;
 
 class Event extends Model
 {
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     /**
      * Field yang boleh diisi secara mass-assignment
@@ -22,6 +23,7 @@ class Event extends Model
         'category',
         'location',
         'address',
+        'poster',
         'event_date',
         'event_time',
         'capacity',

@@ -42,18 +42,28 @@ class WebAuthController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'role' => 'required|in:customer,organizer',
+            'phone' => 'nullable|string|max:25',
+            'website' => 'nullable|url|max:255',
+            'address' => 'nullable|string|max:500',
+            'bio' => 'nullable|string|max:1000',
+            'company_name' => 'nullable|string|max:255',
         ]);
 
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
 
-        // Create user (no profile fields included in registration)
+        // Create user with optional profile fields
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => $request->role ?? 'customer',
+            'phone' => $request->phone,
+            'website' => $request->website,
+            'address' => $request->address,
+            'bio' => $request->bio,
+            'company_name' => $request->company_name,
         ]);
 
         Auth::login($user);

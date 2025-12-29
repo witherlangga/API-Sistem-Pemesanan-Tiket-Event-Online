@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -60,6 +61,11 @@ class User extends Authenticatable
         'password',
         'role',
         'profile_picture',
+        'phone',
+        'website',
+        'address',
+        'bio',
+        'company_name',
     ];
 
     protected $casts = [
@@ -76,11 +82,14 @@ class User extends Authenticatable
 
     public function getProfilePictureUrlAttribute(): ?string
     {
-        if (! $this->profile_picture) {
-            return null;
+        // Prefer the public disk url if file exists
+        if ($this->profile_picture && Storage::disk('public')->exists($this->profile_picture)) {
+            // Use public storage path (served via `php artisan storage:link`)
+            return asset('storage/' . $this->profile_picture);
         }
 
-        return asset('storage/' . $this->profile_picture);
+        // Fallback to a static placeholder (ensure the file exists at public/images/...)
+        return asset('images/avatar-placeholder.svg');
     }
 
     /**

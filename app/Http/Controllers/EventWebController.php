@@ -13,8 +13,8 @@ class EventWebController extends Controller
      */
     public function index()
     {
-        $events = Event::latest()->get();
-        return view('events.index', compact('events'));
+        // Events list has been moved to the dashboard pages. Redirect to dashboard.
+        return redirect('/dashboard');
     }
 
     /**
@@ -22,6 +22,11 @@ class EventWebController extends Controller
      */
     public function create()
     {
+        $user = request()->user();
+        if (! $user || ! $user->isOrganizer()) {
+            return redirect('/events')->with('error', 'Akses ditolak. Hanya organizer yang dapat membuat event.');
+        }
+
         return view('events.create');
     }
 
@@ -30,6 +35,11 @@ class EventWebController extends Controller
      */
     public function store(Request $request)
     {
+        $user = $request->user();
+        if (! $user || ! $user->isOrganizer()) {
+            return redirect('/events')->with('error', 'Akses ditolak.');
+        }
+
         $validated = $request->validate([
             'title'       => 'required|string|max:255',
             'category'    => 'required|string|max:100',
@@ -40,7 +50,7 @@ class EventWebController extends Controller
         ]);
 
         Event::create([
-            'user_id'      => 1, // simulasi organizer
+            'user_id'      => $user->id,
             'title'        => $validated['title'],
             'slug'         => Str::slug($validated['title']),
             'category'     => $validated['category'],
@@ -61,6 +71,11 @@ class EventWebController extends Controller
      */
     public function edit(Event $event)
     {
+        $user = request()->user();
+        if (! $user || ! $user->isOrganizer() || $event->user_id !== $user->id) {
+            return redirect('/events')->with('error', 'Akses ditolak.');
+        }
+
         if ($event->isPublished()) {
             return redirect('/events')
                 ->with('error', 'Event yang sudah dipublish tidak dapat diedit');
@@ -74,6 +89,11 @@ class EventWebController extends Controller
      */
     public function update(Request $request, Event $event)
     {
+        $user = request()->user();
+        if (! $user || ! $user->isOrganizer() || $event->user_id !== $user->id) {
+            return redirect('/events')->with('error', 'Akses ditolak.');
+        }
+
         if ($event->isPublished()) {
             return redirect('/events')
                 ->with('error', 'Event yang sudah dipublish tidak dapat diperbarui');
@@ -107,6 +127,11 @@ class EventWebController extends Controller
      */
     public function destroy(Event $event)
     {
+        $user = request()->user();
+        if (! $user || ! $user->isOrganizer() || $event->user_id !== $user->id) {
+            return redirect('/events')->with('error', 'Akses ditolak.');
+        }
+
         $event->delete();
 
         return redirect('/events')
@@ -118,6 +143,11 @@ class EventWebController extends Controller
      */
     public function publish(Event $event)
     {
+        $user = request()->user();
+        if (! $user || ! $user->isOrganizer() || $event->user_id !== $user->id) {
+            return redirect('/events')->with('error', 'Akses ditolak.');
+        }
+
         if ($event->status !== 'draft') {
             return redirect('/events')
                 ->with('error', 'Event tidak dapat dipublish');
@@ -137,11 +167,36 @@ class EventWebController extends Controller
      */
     public function cancel(Event $event)
     {
+        $user = request()->user();
+        if (! $user || ! $user->isOrganizer() || $event->user_id !== $user->id) {
+            return redirect('/events')->with('error', 'Akses ditolak.');
+        }
+
         $event->update([
             'status' => 'cancelled',
         ]);
 
         return redirect('/events')
             ->with('success', 'Event berhasil dibatalkan');
+    }
+
+    /**
+     * Show public event details.
+     */
+    public function show(Event $event)
+    {
+        $user = request()->user();
+
+        // Allow viewing if published OR if owner (organizer).
+        if ($event->status !== 'published') {
+            if (! $user || $user->id !== $event->user_id) {
+                abort(404);
+            }
+        }
+
+        // eager load organizer
+        $event->load('user');
+
+        return view('events.show', compact('event'));
     }
 }
