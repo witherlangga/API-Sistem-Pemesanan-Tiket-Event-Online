@@ -30,7 +30,15 @@
               <div class="font-semibold">{{ $event->capacity }}</div>
             </div>
 
-            <button id="buyBtn" class="px-4 py-2 bg-[#F53003] text-white rounded shadow hover:opacity-95">Beli Tiket</button>
+            @auth
+              <a href="{{ route('tickets.book', $event) }}" class="px-4 py-2 bg-[#F53003] text-white rounded shadow hover:opacity-95">
+                Beli Tiket
+              </a>
+            @else
+              <a href="{{ route('login') }}" class="px-4 py-2 bg-[#F53003] text-white rounded shadow hover:opacity-95">
+                Login untuk Beli Tiket
+              </a>
+            @endauth
           </div>
         </div>
 
@@ -63,75 +71,73 @@
 
     <aside class="md:w-1/3 bg-gray-50 p-6">
       <div class="sticky top-6 space-y-4">
-        <div class="rounded border p-4 bg-white">
-          <div class="text-sm text-gray-500">Tickets</div>
-          <div class="mt-2 flex items-center justify-between">
-            <div>
-              <div class="font-semibold">General</div>
-              <div class="text-sm text-gray-500">Free / Placeholder</div>
+        <!-- Ticket Listing -->
+        @php
+          $tickets = $event->tickets()->where('is_active', true)->get();
+        @endphp
+        
+        @if($tickets->isNotEmpty())
+          <div class="rounded border p-4 bg-white">
+            <div class="text-sm text-gray-500 mb-3">Tiket Tersedia</div>
+            <div class="space-y-3">
+              @foreach($tickets->take(3) as $ticket)
+                <div class="flex items-center justify-between">
+                  <div class="flex-1">
+                    <div class="font-semibold text-sm">{{ $ticket->name }}</div>
+                    <div class="text-xs text-gray-500">Rp {{ number_format($ticket->price, 0, ',', '.') }}</div>
+                    <div class="text-xs text-gray-400">{{ $ticket->available }} tersedia</div>
+                  </div>
+                </div>
+              @endforeach
             </div>
-            <button id="buyBtnSide" class="px-3 py-1 bg-[#F53003] text-white rounded text-sm">Beli</button>
+            @auth
+              <a href="{{ route('tickets.book', $event) }}" class="mt-4 block w-full text-center px-3 py-2 bg-[#F53003] text-white rounded text-sm hover:opacity-90">
+                Pesan Sekarang
+              </a>
+            @else
+              <a href="{{ route('login') }}" class="mt-4 block w-full text-center px-3 py-2 bg-gray-600 text-white rounded text-sm hover:opacity-90">
+                Login untuk Pesan
+              </a>
+            @endauth
           </div>
-        </div>
+        @else
+          <div class="rounded border p-4 bg-white text-center text-sm text-gray-500">
+            Tiket belum tersedia
+          </div>
+        @endif
 
+        <!-- Additional Info -->
         <div class="rounded border p-4 bg-white">
-          <div class="text-sm text-gray-500">Additional</div>
+          <div class="text-sm text-gray-500">Informasi Tambahan</div>
           <ul class="mt-2 text-sm text-gray-600 space-y-1">
-            <li><strong>Category:</strong> {{ $event->category }}</li>
-            <li><strong>Capacity:</strong> {{ $event->capacity }}</li>
+            <li><strong>Kategori:</strong> {{ $event->category }}</li>
+            <li><strong>Kapasitas:</strong> {{ $event->capacity }}</li>
             <li><strong>Organizer:</strong> {{ $event->user->name }}</li>
           </ul>
         </div>
 
-        <div class="rounded border p-4 bg-white text-sm text-gray-600">
-          <h4 class="font-semibold mb-2">Perhatian</h4>
-          <p>Fitur pembelian tiket belum diimplementasikan. Tombol hanya menunjukkan UI untuk flow pembelian.</p>
-        </div>
+        <!-- Organizer Actions -->
+        @auth
+          @if(auth()->id() === $event->user_id)
+            <div class="rounded border p-4 bg-white">
+              <div class="text-sm text-gray-500 mb-3">Kelola Event</div>
+              <div class="space-y-2">
+                <a href="{{ route('tickets.index', $event) }}" class="block w-full text-center px-3 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700">
+                  Kelola Tiket
+                </a>
+                <a href="{{ route('events.transactions', $event) }}" class="block w-full text-center px-3 py-2 bg-green-600 text-white rounded text-sm hover:bg-green-700">
+                  Lihat Transaksi
+                </a>
+                <a href="{{ route('events.edit', $event) }}" class="block w-full text-center px-3 py-2 bg-gray-600 text-white rounded text-sm hover:bg-gray-700">
+                  Edit Event
+                </a>
+              </div>
+            </div>
+          @endif
+        @endauth
       </div>
     </aside>
   </div>
 </div>
-
-<!-- Modal -->
-<div id="buyModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
-  <div class="bg-white rounded w-[90%] md:w-1/2 p-6">
-    <div class="flex justify-between items-center">
-      <h3 class="text-lg font-semibold">Beli Tiket — {{ $event->title }}</h3>
-      <button id="closeModal" class="text-gray-500">✕</button>
-    </div>
-
-    <div class="mt-4">
-      <p class="text-gray-700">Ini hanya demo UI. Integrasi pembayaran dan pembuatan tiket belum diimplementasikan.</p>
-
-      <div class="mt-6 flex justify-end gap-2">
-        <button id="closeModal2" class="px-4 py-2 bg-gray-200 rounded">Tutup</button>
-        <button id="proceedBtn" class="px-4 py-2 bg-[#F53003] text-white rounded">Lanjut (demo)</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-  (function(){
-    const buy = document.getElementById('buyBtn');
-    const buySide = document.getElementById('buyBtnSide');
-    const modal = document.getElementById('buyModal');
-    const close = document.getElementById('closeModal');
-    const close2 = document.getElementById('closeModal2');
-    const proceed = document.getElementById('proceedBtn');
-
-    function open(){ modal.classList.remove('hidden'); modal.classList.add('flex'); }
-    function closeModal(){ modal.classList.add('hidden'); modal.classList.remove('flex'); }
-
-    buy?.addEventListener('click', open);
-    buySide?.addEventListener('click', open);
-    close?.addEventListener('click', closeModal);
-    close2?.addEventListener('click', closeModal);
-
-    proceed?.addEventListener('click', function(){
-      alert('Checkout belum diimplementasikan — ini hanya demo UI');
-    });
-  })();
-</script>
 
 @endsection

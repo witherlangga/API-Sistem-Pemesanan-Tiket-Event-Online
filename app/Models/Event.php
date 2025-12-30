@@ -32,6 +32,15 @@ class Event extends Model
     ];
 
     /**
+     * Cast field ke tipe data yang sesuai
+     */
+    protected $casts = [
+        'event_date' => 'date',
+        'event_time' => 'datetime:H:i',
+        'published_at' => 'datetime',
+    ];
+
+    /**
      * Relasi ke user sebagai penyelenggara event
      */
     public function user()
@@ -46,6 +55,14 @@ class Event extends Model
     public function tickets()
     {
         return $this->hasMany(Ticket::class);
+    }
+
+    /**
+     * Relasi ke transaksi
+     */
+    public function transactions()
+    {
+        return $this->hasMany(\App\Models\Transaction::class);
     }
 
     /**

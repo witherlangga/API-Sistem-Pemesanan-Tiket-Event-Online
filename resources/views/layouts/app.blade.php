@@ -21,6 +21,9 @@
                         <a href="/events" class="text-gray-600 hover:text-gray-800 px-3 py-2 rounded">Events</a>
                         @auth
                             <a href="/dashboard" class="text-gray-600 hover:text-gray-800 px-3 py-2 rounded">Dashboard</a>
+                            @if(auth()->user()->isCustomer())
+                                <a href="/transactions" class="text-gray-600 hover:text-gray-800 px-3 py-2 rounded">Transaksi Saya</a>
+                            @endif
                             @if(auth()->user()->isOrganizer())
                                 <a href="/events/create" class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded">Create Event</a>
                             @endif

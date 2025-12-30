@@ -156,4 +156,20 @@ class User extends Authenticatable
     {
         return self::byRole($role)->paginate($perPage);
     }
+
+    /**
+     * Relasi ke events (untuk organizer)
+     */
+    public function events()
+    {
+        return $this->hasMany(\App\Models\Event::class);
+    }
+
+    /**
+     * Relasi ke transaksi (untuk customer)
+     */
+    public function transactions()
+    {
+        return $this->hasMany(\App\Models\Transaction::class);
+    }
 }
