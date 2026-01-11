@@ -8,30 +8,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Api\ApiResponse;
 
 class ProfileController extends Controller
 {
+    use ApiResponse;
     /**
      * Get the authenticated user's profile.
      */
     public function show(Request $request)
     {
         $user = $request->user();
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Profil berhasil diambil.',
-            'data' => [
-                'user' => [
-                    'id' => $user->id,
-                    'name' => $user->name,
-                    'email' => $user->email,
-                    'role' => $user->role,
-                    'profile_picture' => $user->profile_picture,
-                    'profile_picture_url' => $user->profile_picture_url,
-                ],
-            ],
-        ], 200);
+        $data = new \App\Http\Resources\UserResource($user);
+        return $this->success('Profil berhasil diambil.', ['user' => $data]);
     }
 
     /**
@@ -51,11 +40,7 @@ class ProfileController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Validasi gagal.',
-                'data' => $validator->errors(),
-            ], 422);
+            return $this->validationError($validator->errors());
         }
 
         try {
@@ -93,25 +78,23 @@ class ProfileController extends Controller
 
             $user->save();
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Profil berhasil diperbarui.',
-                'data' => [
-                    'user' => [
-                        'id' => $user->id,
-                        'name' => $user->name,
-                        'email' => $user->email,
-                        'role' => $user->role,
-                        'profile_picture' => $user->profile_picture,
-                        'profile_picture_url' => $user->profile_picture_url,
-                    ],
+            try {
+                \App\Models\ActivityLog::record($user->id, 'profile:update', $user, $request->only(['name','email']), $request);
+            } catch (\Exception $e) {
+            }
+
+            return $this->success('Profil berhasil diperbarui.', [
+                'user' => [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'role' => $user->role,
+                    'profile_picture' => $user->profile_picture,
+                    'profile_picture_url' => $user->profile_picture_url,
                 ],
-            ], 200);
+            ]);
         } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Pembaruan profil gagal: ' . $e->getMessage(),
-            ], 500);
+            return $this->error('Pembaruan profil gagal: ' . $e->getMessage(), null, 500);
         }
     }
 
@@ -135,15 +118,14 @@ class ProfileController extends Controller
 
             $user->delete();
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Akun berhasil dihapus.',
-            ], 200);
+            try {
+                \App\Models\ActivityLog::record($user->id, 'profile:delete', $user, [], $request);
+            } catch (\Exception $e) {
+            }
+
+            return $this->success('Akun berhasil dihapus.');
         } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Gagal menghapus akun: ' . $e->getMessage(),
-            ], 500);
+            return $this->error('Gagal menghapus akun: ' . $e->getMessage(), null, 500);
         }
     }
 }

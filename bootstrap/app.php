@@ -20,6 +20,8 @@ return Application::configure(basePath: dirname(__DIR__))
         // Alias 'auth:sanctum' untuk mudah digunakan
         $middleware->alias([
             'auth:sanctum' => \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+            'jwt.auth' => \App\Http\Middleware\JwtAuthenticate::class,
+            'jwt_or_sanctum' => \App\Http\Middleware\JwtOrSanctum::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

@@ -31,13 +31,9 @@
             </div>
 
             @auth
-              <a href="{{ route('tickets.book', $event) }}" class="px-4 py-2 bg-[#F53003] text-white rounded shadow hover:opacity-95">
-                Beli Tiket
-              </a>
+              <a href="{{ route('tickets.book', $event) }}" class="px-4 py-2 bg-[#F53003] text-white rounded shadow hover:opacity-95">Beli Tiket</a>
             @else
-              <a href="{{ route('login') }}" class="px-4 py-2 bg-[#F53003] text-white rounded shadow hover:opacity-95">
-                Login untuk Beli Tiket
-              </a>
+              <a href="{{ route('login') }}" class="px-4 py-2 bg-[#F53003] text-white rounded shadow hover:opacity-95">Login untuk Beli Tiket</a>
             @endauth
           </div>
         </div>
@@ -91,13 +87,9 @@
               @endforeach
             </div>
             @auth
-              <a href="{{ route('tickets.book', $event) }}" class="mt-4 block w-full text-center px-3 py-2 bg-[#F53003] text-white rounded text-sm hover:opacity-90">
-                Pesan Sekarang
-              </a>
+              <a href="{{ route('tickets.book', $event) }}" class="mt-4 block w-full text-center px-3 py-2 bg-[#F53003] text-white rounded text-sm hover:opacity-90">Pesan Sekarang</a>
             @else
-              <a href="{{ route('login') }}" class="mt-4 block w-full text-center px-3 py-2 bg-gray-600 text-white rounded text-sm hover:opacity-90">
-                Login untuk Pesan
-              </a>
+              <a href="{{ route('login') }}" class="mt-4 block w-full text-center px-3 py-2 bg-gray-600 text-white rounded text-sm hover:opacity-90">Login untuk Pesan</a>
             @endauth
           </div>
         @else
@@ -122,15 +114,9 @@
             <div class="rounded border p-4 bg-white">
               <div class="text-sm text-gray-500 mb-3">Kelola Event</div>
               <div class="space-y-2">
-                <a href="{{ route('tickets.index', $event) }}" class="block w-full text-center px-3 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700">
-                  Kelola Tiket
-                </a>
-                <a href="{{ route('events.transactions', $event) }}" class="block w-full text-center px-3 py-2 bg-green-600 text-white rounded text-sm hover:bg-green-700">
-                  Lihat Transaksi
-                </a>
-                <a href="{{ route('events.edit', $event) }}" class="block w-full text-center px-3 py-2 bg-gray-600 text-white rounded text-sm hover:bg-gray-700">
-                  Edit Event
-                </a>
+                <a href="{{ route('tickets.index', $event) }}" class="block w-full text-center px-3 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700">Kelola Tiket</a>
+                <a href="{{ route('events.transactions', $event) }}" class="block w-full text-center px-3 py-2 bg-green-600 text-white rounded text-sm hover:bg-green-700">Lihat Transaksi</a>
+                <a href="{{ route('events.edit', $event) }}" class="block w-full text-center px-3 py-2 bg-gray-600 text-white rounded text-sm hover:bg-gray-700">Edit Event</a>
               </div>
             </div>
           @endif

@@ -1,0 +1,3013 @@
+{
+	"info": {
+		"_postman_id": "315a99d0-5e96-4f6c-91c5-31e28630ec9b",
+		"name": "API EVENT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49032388"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "0",
+								"name": "content-length",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Org Example\",\r\n  \"email\": \"org@example1.com\",\r\n  \"password\": \"password123\",\r\n  \"password_confirmation\": \"password123\",\r\n  \"role\": \"organizer\",\r\n  \"company_name\": \"Contoh Corp\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Org Example\",\r\n  \"email\": \"org@example1.com\",\r\n  \"password\": \"password123\",\r\n  \"password_confirmation\": \"password123\",\r\n  \"role\": \"organizer\",\r\n  \"company_name\": \"Contoh Corp\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Jan 2026 10:17:18 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Registrasi berhasil.\",\n    \"data\": {\n        \"user\": {\n            \"id\": 10,\n            \"name\": \"Org Example\",\n            \"email\": \"org@example1.com\",\n            \"role\": \"organizer\",\n            \"profile_picture\": null,\n            \"profile_picture_url\": \"http://localhost:8000/images/avatar-placeholder.svg\",\n            \"created_at\": \"2026-01-10 10:17:18\"\n        },\n        \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNzY4MDQwMjM4LCJleHAiOjE3NjgwNDM4MzgsInN1YiI6MTAsInNjb3BlcyI6WyJvcmdhbml6ZXIiXX0.BhX2PTI-DaglW-ctSRbloEodA3lD8mn5jVL7DA6Vshk\",\n        \"token_type\": \"Bearer\",\n        \"expires_in\": 3600,\n        \"refresh_token\": \"0d76aa5466a6c8756e87a9ef46ec007103bc1343b07e45a870b622b862e4b2a9bca897771f853b3e1c6b683bd26b988b89a42f54498e972b4a16381a03ab3ce7\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNzY4MDM3MzY0LCJleHAiOjE3NjgwNDA5NjQsInN1YiI6Nywic2NvcGVzIjpbImN1c3RvbWVyIl19.u8PL8YScJuQmfIbn88hoWokGKoxEfv4mrl2S0ByArvM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"name": "content-type",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "<calculated when request is sent>",
+								"name": "content-length",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"name\": \"Nama Baru\", \"phone\": \"+628123...\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Profile",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \"name\": \"Nama Baru\", \"phone\": \"+628123...\" }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Jan 2026 09:39:51 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Profil berhasil diperbarui.\",\n    \"data\": {\n        \"user\": {\n            \"id\": 7,\n            \"name\": \"Nama Baru\",\n            \"email\": \"jane@example2.com\",\n            \"role\": \"customer\",\n            \"profile_picture\": null,\n            \"profile_picture_url\": \"http://localhost:8000/images/avatar-placeholder.svg\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNzY4MDQwMjM4LCJleHAiOjE3NjgwNDM4MzgsInN1YiI6MTAsInNjb3BlcyI6WyJvcmdhbml6ZXIiXX0.BhX2PTI-DaglW-ctSRbloEodA3lD8mn5jVL7DA6Vshk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNzY4MDM1NTQzLCJleHAiOjE3NjgwMzkxNDMsInN1YiI6Niwic2NvcGVzIjpbImN1c3RvbWVyIl19.Qa_ARDwhEJWRPyEKfcfm33HNPsOfSsLrGQKdbbHr4z0",
+								"name": "authorization",
+								"type": "text"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"name": "content-type",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "<calculated when request is sent>",
+								"name": "content-length",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"org@example1.com\",\r\n  \"password\": \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"org@example1.com\",\r\n  \"password\": \"password123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Jan 2026 12:09:40 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Login berhasil.\",\n    \"data\": {\n        \"user\": {\n            \"id\": 10,\n            \"name\": \"Org Example\",\n            \"email\": \"org@example1.com\",\n            \"role\": \"organizer\",\n            \"profile_picture\": null,\n            \"profile_picture_url\": \"http://localhost:8000/images/avatar-placeholder.svg\",\n            \"created_at\": \"2026-01-10 10:17:18\"\n        },\n        \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNzY4MDQ2OTgwLCJleHAiOjE3NjgwNTA1ODAsInN1YiI6MTAsInNjb3BlcyI6WyJvcmdhbml6ZXIiXX0.oNEeZsSEGWxKVeQH3seQTgb6gusGWmXxu50BwdfhIhk\",\n        \"token_type\": \"Bearer\",\n        \"expires_in\": 3600,\n        \"refresh_token\": \"d3c4aca8fa0d7bb2f11b5eadb3811e9f8fa47d2755faaf87f39ca818144f227a73eaa4897278f7689aaee4724d3dbaa1f850883b050dbf6d6e68cfc4a433ca10\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNzY4MDQ2OTgwLCJleHAiOjE3NjgwNTA1ODAsInN1YiI6MTAsInNjb3BlcyI6WyJvcmdhbml6ZXIiXX0.oNEeZsSEGWxKVeQH3seQTgb6gusGWmXxu50BwdfhIhk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Logout",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/logout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Jan 2026 12:23:55 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Logout berhasil.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List User Detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNzY4MDM2NTcxLCJleHAiOjE3NjgwNDAxNzEsInN1YiI6Nywic2NvcGVzIjpbImN1c3RvbWVyIl19.-Y8RiI8qz6vpAhrYg4XCvqcQjb1uVICnGRusgVuon9w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List User Detail",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8000/api/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Jan 2026 09:19:42 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": {\n        \"data\": [\n            {\n                \"id\": 7,\n                \"name\": \"Jane\",\n                \"email\": \"jane@example2.com\",\n                \"role\": \"customer\",\n                \"profile_picture\": null,\n                \"profile_picture_url\": \"http://localhost:8000/images/avatar-placeholder.svg\",\n                \"created_at\": \"2026-01-10 09:16:11\"\n            },\n            {\n                \"id\": 6,\n                \"name\": \"Jane\",\n                \"email\": \"jane@example1.com\",\n                \"role\": \"customer\",\n                \"profile_picture\": null,\n                \"profile_picture_url\": \"http://localhost:8000/images/avatar-placeholder.svg\",\n                \"created_at\": \"2026-01-10 08:59:03\"\n            },\n            {\n                \"id\": 5,\n                \"name\": \"Jane Example\",\n                \"email\": \"jane@example.com\",\n                \"role\": \"customer\",\n                \"profile_picture\": null,\n                \"profile_picture_url\": \"http://localhost:8000/images/avatar-placeholder.svg\",\n                \"created_at\": \"2026-01-10 08:28:14\"\n            },\n            {\n                \"id\": 1,\n                \"name\": \"Test User\",\n                \"email\": \"test@example.com\",\n                \"role\": \"customer\",\n                \"profile_picture\": null,\n                \"profile_picture_url\": \"http://localhost:8000/images/avatar-placeholder.svg\",\n                \"created_at\": \"2026-01-10 07:51:30\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"Prof. Philip Paucek IV\",\n                \"email\": \"bryce.schinner@example.org\",\n                \"role\": \"organizer\",\n                \"profile_picture\": null,\n                \"profile_picture_url\": \"http://localhost:8000/images/avatar-placeholder.svg\",\n                \"created_at\": \"2026-01-10 07:51:30\"\n            },\n            {\n                \"id\": 3,\n                \"name\": \"Darrin Bailey\",\n                \"email\": \"witting.annette@example.com\",\n                \"role\": \"organizer\",\n                \"profile_picture\": null,\n                \"profile_picture_url\": \"http://localhost:8000/images/avatar-placeholder.svg\",\n                \"created_at\": \"2026-01-10 07:51:30\"\n            },\n            {\n                \"id\": 4,\n                \"name\": \"Darrell McKenzie\",\n                \"email\": \"eleanora.rowe@example.org\",\n                \"role\": \"organizer\",\n                \"profile_picture\": null,\n                \"profile_picture_url\": \"http://localhost:8000/images/avatar-placeholder.svg\",\n                \"created_at\": \"2026-01-10 07:51:30\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://localhost:8000/api/users?page=1\",\n            \"last\": \"http://localhost:8000/api/users?page=1\",\n            \"prev\": null,\n            \"next\": null\n        },\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"links\": [\n                {\n                    \"url\": null,\n                    \"label\": \"&laquo; Previous\",\n                    \"page\": null,\n                    \"active\": false\n                },\n                {\n                    \"url\": \"http://localhost:8000/api/users?page=1\",\n                    \"label\": \"1\",\n                    \"page\": 1,\n                    \"active\": true\n                },\n                {\n                    \"url\": null,\n                    \"label\": \"Next &raquo;\",\n                    \"page\": null,\n                    \"active\": false\n                }\n            ],\n            \"path\": \"http://localhost:8000/api/users\",\n            \"per_page\": 15,\n            \"to\": 7,\n            \"total\": 7\n        }\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"per_page\": 15,\n        \"total\": 7\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "0",
+								"name": "content-length",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"refresh_token\": \"81f73dd3fdec9f3d4a8dd4ce56ecaf8f0ec04e77a437ed355e1ccd55a5333a7b8543e4cb3b94d03d3872b0ff9ad3ca0c7211b2f405cd334cdbad36653671b10f\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/auth/refresh",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"refresh_token\": \"81f73dd3fdec9f3d4a8dd4ce56ecaf8f0ec04e77a437ed355e1ccd55a5333a7b8543e4cb3b94d03d3872b0ff9ad3ca0c7211b2f405cd334cdbad36653671b10f\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/auth/refresh",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"auth",
+										"refresh"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Jan 2026 09:29:24 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNzY4MDM3MzY0LCJleHAiOjE3NjgwNDA5NjQsInN1YiI6Nywic2NvcGVzIjpbImN1c3RvbWVyIl19.u8PL8YScJuQmfIbn88hoWokGKoxEfv4mrl2S0ByArvM\",\n        \"token_type\": \"Bearer\",\n        \"expires_in\": 3600,\n        \"refresh_token\": \"44e15d48c40dc98d39d0baffc5da6c7b6335fa8864f90d8dc13a669006996b7e21eb0d992cbefbef93413b2448ad20155cec8b026b5d45233edd15751a9ba16f\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Show Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNzY4MDM3MzY0LCJleHAiOjE3NjgwNDA5NjQsInN1YiI6Nywic2NvcGVzIjpbImN1c3RvbWVyIl19.u8PL8YScJuQmfIbn88hoWokGKoxEfv4mrl2S0ByArvM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Show Profile",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8000/api/profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Jan 2026 09:34:31 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Profil berhasil diambil.\",\n    \"data\": {\n        \"user\": {\n            \"id\": 7,\n            \"name\": \"Jane\",\n            \"email\": \"jane@example2.com\",\n            \"role\": \"customer\",\n            \"profile_picture\": null,\n            \"profile_picture_url\": \"http://localhost:8000/images/avatar-placeholder.svg\",\n            \"created_at\": \"2026-01-10 09:16:11\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNzY4MDM3MzY0LCJleHAiOjE3NjgwNDA5NjQsInN1YiI6Nywic2NvcGVzIjpbImN1c3RvbWVyIl19.u8PL8YScJuQmfIbn88hoWokGKoxEfv4mrl2S0ByArvM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Profile",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8000/api/profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Jan 2026 09:43:33 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Akun berhasil dihapus.\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Event",
+			"item": [
+				{
+					"name": "Create Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNzY4MDQ2OTgwLCJleHAiOjE3NjgwNTA1ODAsInN1YiI6MTAsInNjb3BlcyI6WyJvcmdhbml6ZXIiXX0.oNEeZsSEGWxKVeQH3seQTgb6gusGWmXxu50BwdfhIhk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": " application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Konser Akustik\",\r\n  \"description\": \"Konser akustik menampilkan musisi lokal.\",\r\n  \"category\": \"Music\",\r\n  \"location\": \"Taman Merdeka\",\r\n  \"address\": \"Jl. Merdeka No.1, Jakarta\",\r\n  \"event_date\": \"2026-02-15\",\r\n  \"event_time\": \"19:00\",\r\n  \"capacity\": 200\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"events"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Event",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": " application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"Konser Akustik\",\r\n  \"description\": \"Konser akustik menampilkan musisi lokal.\",\r\n  \"category\": \"Music\",\r\n  \"location\": \"Taman Merdeka\",\r\n  \"address\": \"Jl. Merdeka No.1, Jakarta\",\r\n  \"event_date\": \"2026-02-15\",\r\n  \"event_time\": \"19:00\",\r\n  \"capacity\": 200\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/events",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"events"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Jan 2026 12:10:17 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Event berhasil dibuat sebagai draft\",\n    \"data\": {\n        \"user_id\": 10,\n        \"title\": \"Konser Akustik\",\n        \"slug\": \"konser-akustik\",\n        \"description\": \"Konser akustik menampilkan musisi lokal.\",\n        \"category\": \"Music\",\n        \"location\": \"Taman Merdeka\",\n        \"address\": \"Jl. Merdeka No.1, Jakarta\",\n        \"event_date\": \"2026-02-15T00:00:00.000000Z\",\n        \"event_time\": \"19:00\",\n        \"capacity\": 200,\n        \"status\": \"draft\",\n        \"published_at\": null,\n        \"updated_at\": \"2026-01-10T12:10:17.000000Z\",\n        \"created_at\": \"2026-01-10T12:10:17.000000Z\",\n        \"id\": 22\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Events",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNzY4MDQwNTA2LCJleHAiOjE3NjgwNDQxMDYsInN1YiI6MTAsInNjb3BlcyI6WyJvcmdhbml6ZXIiXX0.QnTW87tw_QSiSLsz7fM5FkBcNSXFQHMUcC34ADZbln8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Konser Akustik - Update\",\r\n  \"description\": \"Update: ada band pembuka.\",\r\n  \"category\": \"Music\",\r\n  \"location\": \"Taman Merdeka\",\r\n  \"address\": \"Jl. Merdeka No.1\",\r\n  \"event_date\": \"2026-02-16\",\r\n  \"event_time\": \"20:00\",\r\n  \"capacity\": 250\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/events/21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"events",
+								"21"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"Konser Akustik - Update\",\r\n  \"description\": \"Update: ada band pembuka.\",\r\n  \"category\": \"Music\",\r\n  \"location\": \"Taman Merdeka\",\r\n  \"address\": \"Jl. Merdeka No.1\",\r\n  \"event_date\": \"2026-02-16\",\r\n  \"event_time\": \"20:00\",\r\n  \"capacity\": 250\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/events/21",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"events",
+										"21"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Jan 2026 10:31:05 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Event berhasil diperbarui\",\n    \"data\": {\n        \"id\": 21,\n        \"user_id\": 1,\n        \"title\": \"Konser Akustik - Update\",\n        \"slug\": \"konser-akustik-update\",\n        \"description\": \"Update: ada band pembuka.\",\n        \"category\": \"Music\",\n        \"location\": \"Taman Merdeka\",\n        \"address\": \"Jl. Merdeka No.1\",\n        \"poster\": null,\n        \"event_date\": \"2026-02-16T00:00:00.000000Z\",\n        \"event_time\": \"20:00\",\n        \"capacity\": 250,\n        \"status\": \"draft\",\n        \"published_at\": null,\n        \"created_at\": \"2026-01-10T10:23:42.000000Z\",\n        \"updated_at\": \"2026-01-10T10:31:05.000000Z\",\n        \"deleted_at\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Publish Even",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNzY4MDQwNTA2LCJleHAiOjE3NjgwNDQxMDYsInN1YiI6MTAsInNjb3BlcyI6WyJvcmdhbml6ZXIiXX0.QnTW87tw_QSiSLsz7fM5FkBcNSXFQHMUcC34ADZbln8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "0",
+								"name": "content-length",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/events/21/publish",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"events",
+								"21",
+								"publish"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Publish Even",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8000/api/events/21/publish",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"events",
+										"21",
+										"publish"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Jan 2026 10:35:06 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Event berhasil dipublish\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Cancel Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNzY4MDQ5NTg5LCJleHAiOjE3NjgwNTMxODksInN1YiI6MTAsInNjb3BlcyI6WyJvcmdhbml6ZXIiXX0.nEH7bc1VfluhDjRSQOJkqI6bOXkvg12Oct88YVvx9ew",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/events/23/cancel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"events",
+								"23",
+								"cancel"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Cancel Event",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Jan 2026 10:41:14 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Event berhasil dibatalkan\"\n}"
+						},
+						{
+							"name": "Cancel Event",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/events/23/cancel",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"events",
+										"23",
+										"cancel"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Jan 2026 12:58:49 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Event berhasil dibatalkan\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNzY4MDQwNTA2LCJleHAiOjE3NjgwNDQxMDYsInN1YiI6MTAsInNjb3BlcyI6WyJvcmdhbml6ZXIiXX0.QnTW87tw_QSiSLsz7fM5FkBcNSXFQHMUcC34ADZbln8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/events/21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"events",
+								"21"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Event",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/events/21",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"events",
+										"21"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Jan 2026 10:42:56 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Event berhasil dihapus\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List Events",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNzY4MDQ5NTg5LCJleHAiOjE3NjgwNTMxODksInN1YiI6MTAsInNjb3BlcyI6WyJvcmdhbml6ZXIiXX0.nEH7bc1VfluhDjRSQOJkqI6bOXkvg12Oct88YVvx9ew",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"events"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Events",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/events",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"events"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Jan 2026 10:44:26 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Daftar event publik berhasil diambil\",\n    \"data\": {\n        \"data\": [\n            {\n                \"id\": 1,\n                \"title\": \"Velit voluptas praesentium quia.\",\n                \"slug\": \"velit-voluptas-praesentium-quia-CBiDKP\",\n                \"description\": \"Ipsam cum incidunt provident consequuntur. Quod qui id nihil id sit qui.\\n\\nUt laborum aut consequuntur enim consequatur ut et. Rerum illo suscipit sint dicta quia iste dolorem.\\n\\nAut nemo ea quibusdam harum minima ipsam. Qui delectus non qui minima rerum. Iusto velit sequi eligendi est amet labore impedit nobis. Rerum nobis quidem quod aperiam ipsam distinctio enim. Nihil est ad repellat et eos id.\",\n                \"category\": \"Webinar\",\n                \"location\": \"North Zetta\",\n                \"address\": \"7215 Kutch Via\\nPort Ameliamouth, RI 58944-9975\",\n                \"poster\": \"images/posters/poster-4.svg\",\n                \"event_date\": \"2026-02-18\",\n                \"event_time\": \"2026-01-10T02:23:27.000000Z\",\n                \"capacity\": 185,\n                \"status\": \"published\",\n                \"published_at\": \"2026-01-10 07:51:30\",\n                \"created_at\": \"2026-01-10 07:51:30\",\n                \"updated_at\": \"2026-01-10 07:51:30\"\n            },\n            {\n                \"id\": 2,\n                \"title\": \"Cum sapiente blanditiis consectetur.\",\n                \"slug\": \"cum-sapiente-blanditiis-consectetur-0lLPxQ\",\n                \"description\": \"Dolorum enim et officia praesentium vel. Perspiciatis quaerat natus impedit rem hic iusto.\\n\\nIpsum culpa aut nihil iste. Voluptatem nihil iste ex sit. Aut libero nostrum consequatur.\\n\\nNesciunt vel libero aut culpa quia neque consequatur. Commodi est necessitatibus adipisci ratione.\",\n                \"category\": \"Webinar\",\n                \"location\": \"Croninberg\",\n                \"address\": \"1390 Oberbrunner Springs Apt. 075\\nEthelynbury, NV 31058-1498\",\n                \"poster\": \"images/posters/poster-3.svg\",\n                \"event_date\": \"2026-02-16\",\n                \"event_time\": \"2026-01-10T07:06:08.000000Z\",\n                \"capacity\": 794,\n                \"status\": \"published\",\n                \"published_at\": \"2026-01-10 07:51:30\",\n                \"created_at\": \"2026-01-10 07:51:30\",\n                \"updated_at\": \"2026-01-10 07:51:30\"\n            },\n            {\n                \"id\": 3,\n                \"title\": \"Aut modi error odit officia quis.\",\n                \"slug\": \"aut-modi-error-odit-officia-quis-i9yHs6\",\n                \"description\": \"Quos autem et sint alias. Sequi voluptatem architecto facilis explicabo ut voluptatem.\\n\\nLaudantium aut itaque provident perferendis dolorum et. Aut magni ut corporis consequatur vel corrupti accusamus. Consequatur ullam voluptatibus quas est itaque et occaecati. Ut non sint ut. Ipsum accusamus qui perspiciatis qui sed aut ea quisquam.\\n\\nIste itaque quis commodi sit velit. Qui quod iste blanditiis eum accusantium veritatis maxime. Voluptatibus molestiae voluptate aut minima labore consequatur ullam fugiat.\",\n                \"category\": \"Meetup\",\n                \"location\": \"Wardport\",\n                \"address\": \"175 Giles Pass Apt. 386\\nJanestad, CO 59468-1096\",\n                \"poster\": \"images/posters/poster-20.svg\",\n                \"event_date\": \"2026-02-01\",\n                \"event_time\": \"2026-01-10T08:35:45.000000Z\",\n                \"capacity\": 231,\n                \"status\": \"published\",\n                \"published_at\": \"2026-01-10 07:51:30\",\n                \"created_at\": \"2026-01-10 07:51:30\",\n                \"updated_at\": \"2026-01-10 07:51:30\"\n            },\n            {\n                \"id\": 4,\n                \"title\": \"Impedit optio dolores vel maxime reiciendis aut.\",\n                \"slug\": \"impedit-optio-dolores-vel-maxime-reiciendis-aut-yp1J82\",\n                \"description\": \"Consequuntur asperiores voluptates blanditiis dolores culpa. Veniam error laborum aut. Esse praesentium est suscipit enim quisquam architecto quos. Laudantium adipisci vel qui minus assumenda aut nostrum.\\n\\nQuia eum eos maxime nemo quas. Sed aut alias quo doloribus commodi vero neque. Eum aut architecto dolorem ut nobis nisi aut quia. Accusantium quam repellendus nobis.\\n\\nExcepturi quia est provident necessitatibus commodi aliquam. Eius maiores aspernatur ea itaque quia id voluptatem. Eos officiis optio ratione corrupti eligendi provident ut eaque. Temporibus nobis libero veniam dicta sunt et enim quia.\",\n                \"category\": \"Seminar\",\n                \"location\": \"Jeraldfurt\",\n                \"address\": \"6684 Wilton Station Suite 835\\nSouth Emileton, NH 26347-8418\",\n                \"poster\": \"images/posters/poster-10.svg\",\n                \"event_date\": \"2026-01-25\",\n                \"event_time\": \"2026-01-10T11:42:14.000000Z\",\n                \"capacity\": 962,\n                \"status\": \"published\",\n                \"published_at\": \"2026-01-10 07:51:30\",\n                \"created_at\": \"2026-01-10 07:51:30\",\n                \"updated_at\": \"2026-01-10 07:51:30\"\n            },\n            {\n                \"id\": 5,\n                \"title\": \"Et voluptatem earum dolorum autem.\",\n                \"slug\": \"et-voluptatem-earum-dolorum-autem-niqp5J\",\n                \"description\": \"Fugiat quod omnis ex necessitatibus deserunt unde. Totam animi consequuntur officiis ducimus repellendus et hic illo. Est aut non est ut.\\n\\nIure aut iste sint. Ipsa nostrum sunt labore minus blanditiis minima.\\n\\nMollitia ex placeat neque omnis adipisci ea. Temporibus aliquid quibusdam necessitatibus aliquam pariatur eveniet voluptatibus. Repudiandae odit qui soluta ullam inventore ducimus. Sed maxime illum alias aut.\",\n                \"category\": \"Webinar\",\n                \"location\": \"Joeymouth\",\n                \"address\": \"66333 Bartoletti Port\\nSchulistview, TN 60817\",\n                \"poster\": \"images/posters/poster-16.svg\",\n                \"event_date\": \"2026-02-17\",\n                \"event_time\": \"2026-01-10T20:05:24.000000Z\",\n                \"capacity\": 247,\n                \"status\": \"published\",\n                \"published_at\": \"2026-01-10 07:51:30\",\n                \"created_at\": \"2026-01-10 07:51:30\",\n                \"updated_at\": \"2026-01-10 07:51:30\"\n            },\n            {\n                \"id\": 6,\n                \"title\": \"Nulla sint nesciunt laborum.\",\n                \"slug\": \"nulla-sint-nesciunt-laborum-lfaQR0\",\n                \"description\": \"Quae animi odio nemo est. Aliquam quos veniam debitis est rerum. Porro tempore non consequatur accusantium quibusdam. Eligendi eligendi quam quaerat eius reiciendis itaque praesentium.\\n\\nVoluptatibus enim voluptatum recusandae quibusdam illo. Et dolores quia omnis illo ea molestias. Fugit est delectus magnam sapiente ipsum quisquam hic eum. Sit rem possimus harum incidunt ut enim.\\n\\nModi eveniet vitae dolorem autem et. Ea rem ut amet reiciendis incidunt. Maxime et quae at et.\",\n                \"category\": \"Workshop\",\n                \"location\": \"West Brando\",\n                \"address\": \"95186 Kevin Shore\\nJamilville, MI 40741\",\n                \"poster\": \"images/posters/poster-18.svg\",\n                \"event_date\": \"2026-04-04\",\n                \"event_time\": \"2026-01-10T12:48:44.000000Z\",\n                \"capacity\": 198,\n                \"status\": \"published\",\n                \"published_at\": \"2026-01-10 07:51:30\",\n                \"created_at\": \"2026-01-10 07:51:30\",\n                \"updated_at\": \"2026-01-10 07:51:30\"\n            },\n            {\n                \"id\": 7,\n                \"title\": \"Fuga nemo occaecati aut.\",\n                \"slug\": \"fuga-nemo-occaecati-aut-PG4e3e\",\n                \"description\": \"Possimus perferendis qui illum quasi dicta et unde. Voluptas dolorem distinctio quas earum enim facilis. Sunt mollitia quasi omnis illum. Quia rem laboriosam vitae nisi eaque consequatur. Enim non est quisquam et.\\n\\nUt quasi esse eius beatae corporis. Qui quos molestiae aut ut. Voluptate voluptate tenetur rerum ut expedita incidunt sint. Consectetur reiciendis eum quia minus eos praesentium rerum nihil.\\n\\nDolores est voluptates deleniti officia natus excepturi. Quam quas autem quam neque nam ab. Eaque voluptatem ab quidem praesentium exercitationem non.\",\n                \"category\": \"Meetup\",\n                \"location\": \"South Tyler\",\n                \"address\": \"135 Tromp Meadow\\nCollinsport, LA 23376\",\n                \"poster\": \"images/posters/poster-1.svg\",\n                \"event_date\": \"2026-03-24\",\n                \"event_time\": \"2026-01-10T13:48:37.000000Z\",\n                \"capacity\": 651,\n                \"status\": \"published\",\n                \"published_at\": \"2026-01-10 07:51:30\",\n                \"created_at\": \"2026-01-10 07:51:30\",\n                \"updated_at\": \"2026-01-10 07:51:30\"\n            },\n            {\n                \"id\": 8,\n                \"title\": \"Aut non commodi nulla quidem rerum consequatur.\",\n                \"slug\": \"aut-non-commodi-nulla-quidem-rerum-consequatur-jtJBRy\",\n                \"description\": \"Perferendis voluptatibus ipsa alias qui et sequi id. Quasi qui consequuntur velit id illo. Ex ut rerum aut mollitia.\\n\\nEum nemo et hic vero laboriosam beatae. Enim quidem dolores iste doloribus. Totam optio modi non consectetur qui dolor hic.\\n\\nQuia ut odit optio et praesentium eius. Esse est numquam quae rerum pariatur ex cumque quae. Aliquid impedit id voluptatem quo qui quibusdam et. Eum sunt quibusdam asperiores nulla harum voluptates corrupti id.\",\n                \"category\": \"Meetup\",\n                \"location\": \"Lake Jany\",\n                \"address\": \"89960 German Center Suite 792\\nSheilaside, UT 75080-6794\",\n                \"poster\": \"images/posters/poster-13.svg\",\n                \"event_date\": \"2026-02-25\",\n                \"event_time\": \"2026-01-10T16:27:48.000000Z\",\n                \"capacity\": 186,\n                \"status\": \"published\",\n                \"published_at\": \"2026-01-10 07:51:30\",\n                \"created_at\": \"2026-01-10 07:51:30\",\n                \"updated_at\": \"2026-01-10 07:51:30\"\n            },\n            {\n                \"id\": 9,\n                \"title\": \"Quis facere quis amet quia.\",\n                \"slug\": \"quis-facere-quis-amet-quia-po1xfW\",\n                \"description\": \"Dolor nisi consequuntur blanditiis qui. Animi aperiam non cumque necessitatibus reiciendis sunt. Saepe dolores dolor odit consequatur earum.\\n\\nPlaceat et laboriosam provident voluptatibus culpa nulla sit. Quia officiis deserunt possimus facere voluptatum. Doloribus provident et nostrum. Minima ea enim aut eos repellendus.\\n\\nDolores aut alias sapiente mollitia qui. Eos exercitationem et consequatur aut aperiam. Odit quia necessitatibus et. Blanditiis assumenda placeat excepturi dolores dolores distinctio consectetur.\",\n                \"category\": \"Workshop\",\n                \"location\": \"Eileenchester\",\n                \"address\": \"224 Jenkins Mount Apt. 101\\nMarquisefurt, NH 55716-5278\",\n                \"poster\": \"images/posters/poster-7.svg\",\n                \"event_date\": \"2026-03-25\",\n                \"event_time\": \"2026-01-10T02:20:44.000000Z\",\n                \"capacity\": 756,\n                \"status\": \"published\",\n                \"published_at\": \"2026-01-10 07:51:30\",\n                \"created_at\": \"2026-01-10 07:51:30\",\n                \"updated_at\": \"2026-01-10 07:51:30\"\n            },\n            {\n                \"id\": 10,\n                \"title\": \"Quo perspiciatis et non nostrum.\",\n                \"slug\": \"quo-perspiciatis-et-non-nostrum-wKvtH9\",\n                \"description\": \"At magnam molestiae ullam iste vel eligendi id. Deserunt et praesentium quia. Eaque est ipsam repudiandae et qui exercitationem quidem et.\\n\\nAut voluptas ex enim architecto animi tempore amet. Velit veritatis quas eius aut itaque id. Odit ex eveniet dolorem assumenda. Et nemo explicabo odio nostrum in aut.\\n\\nQuia aliquam omnis delectus blanditiis. Ut odio ex rerum et aut fuga. Facilis distinctio aspernatur sunt nemo at quod ducimus. In nam asperiores debitis neque.\",\n                \"category\": \"Meetup\",\n                \"location\": \"Lake Brittany\",\n                \"address\": \"992 Kelsie Mill Apt. 406\\nEast Britney, WY 97026-7602\",\n                \"poster\": \"images/posters/poster-15.svg\",\n                \"event_date\": \"2026-01-24\",\n                \"event_time\": \"2026-01-10T12:59:59.000000Z\",\n                \"capacity\": 405,\n                \"status\": \"published\",\n                \"published_at\": \"2026-01-10 07:51:30\",\n                \"created_at\": \"2026-01-10 07:51:30\",\n                \"updated_at\": \"2026-01-10 07:51:30\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://localhost:8000/api/events?page=1\",\n            \"last\": \"http://localhost:8000/api/events?page=2\",\n            \"prev\": null,\n            \"next\": \"http://localhost:8000/api/events?page=2\"\n        },\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 2,\n            \"links\": [\n                {\n                    \"url\": null,\n                    \"label\": \"&laquo; Previous\",\n                    \"page\": null,\n                    \"active\": false\n                },\n                {\n                    \"url\": \"http://localhost:8000/api/events?page=1\",\n                    \"label\": \"1\",\n                    \"page\": 1,\n                    \"active\": true\n                },\n                {\n                    \"url\": \"http://localhost:8000/api/events?page=2\",\n                    \"label\": \"2\",\n                    \"page\": 2,\n                    \"active\": false\n                },\n                {\n                    \"url\": \"http://localhost:8000/api/events?page=2\",\n                    \"label\": \"Next &raquo;\",\n                    \"page\": 2,\n                    \"active\": false\n                }\n            ],\n            \"path\": \"http://localhost:8000/api/events\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 20\n        }\n    }\n}"
+						},
+						{
+							"name": "List Events",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8000/api/events",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"events"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Jan 2026 13:04:17 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Daftar event publik berhasil diambil\",\n    \"data\": {\n        \"data\": [\n            {\n                \"id\": 1,\n                \"title\": \"Velit voluptas praesentium quia.\",\n                \"slug\": \"velit-voluptas-praesentium-quia-CBiDKP\",\n                \"description\": \"Ipsam cum incidunt provident consequuntur. Quod qui id nihil id sit qui.\\n\\nUt laborum aut consequuntur enim consequatur ut et. Rerum illo suscipit sint dicta quia iste dolorem.\\n\\nAut nemo ea quibusdam harum minima ipsam. Qui delectus non qui minima rerum. Iusto velit sequi eligendi est amet labore impedit nobis. Rerum nobis quidem quod aperiam ipsam distinctio enim. Nihil est ad repellat et eos id.\",\n                \"category\": \"Webinar\",\n                \"location\": \"North Zetta\",\n                \"address\": \"7215 Kutch Via\\nPort Ameliamouth, RI 58944-9975\",\n                \"poster\": \"images/posters/poster-4.svg\",\n                \"event_date\": \"2026-02-18\",\n                \"event_time\": \"2026-01-10T02:23:27.000000Z\",\n                \"capacity\": 185,\n                \"status\": \"published\",\n                \"published_at\": \"2026-01-10 07:51:30\",\n                \"created_at\": \"2026-01-10 07:51:30\",\n                \"updated_at\": \"2026-01-10 07:51:30\"\n            },\n            {\n                \"id\": 2,\n                \"title\": \"Cum sapiente blanditiis consectetur.\",\n                \"slug\": \"cum-sapiente-blanditiis-consectetur-0lLPxQ\",\n                \"description\": \"Dolorum enim et officia praesentium vel. Perspiciatis quaerat natus impedit rem hic iusto.\\n\\nIpsum culpa aut nihil iste. Voluptatem nihil iste ex sit. Aut libero nostrum consequatur.\\n\\nNesciunt vel libero aut culpa quia neque consequatur. Commodi est necessitatibus adipisci ratione.\",\n                \"category\": \"Webinar\",\n                \"location\": \"Croninberg\",\n                \"address\": \"1390 Oberbrunner Springs Apt. 075\\nEthelynbury, NV 31058-1498\",\n                \"poster\": \"images/posters/poster-3.svg\",\n                \"event_date\": \"2026-02-16\",\n                \"event_time\": \"2026-01-10T07:06:08.000000Z\",\n                \"capacity\": 794,\n                \"status\": \"published\",\n                \"published_at\": \"2026-01-10 07:51:30\",\n                \"created_at\": \"2026-01-10 07:51:30\",\n                \"updated_at\": \"2026-01-10 07:51:30\"\n            },\n            {\n                \"id\": 3,\n                \"title\": \"Aut modi error odit officia quis.\",\n                \"slug\": \"aut-modi-error-odit-officia-quis-i9yHs6\",\n                \"description\": \"Quos autem et sint alias. Sequi voluptatem architecto facilis explicabo ut voluptatem.\\n\\nLaudantium aut itaque provident perferendis dolorum et. Aut magni ut corporis consequatur vel corrupti accusamus. Consequatur ullam voluptatibus quas est itaque et occaecati. Ut non sint ut. Ipsum accusamus qui perspiciatis qui sed aut ea quisquam.\\n\\nIste itaque quis commodi sit velit. Qui quod iste blanditiis eum accusantium veritatis maxime. Voluptatibus molestiae voluptate aut minima labore consequatur ullam fugiat.\",\n                \"category\": \"Meetup\",\n                \"location\": \"Wardport\",\n                \"address\": \"175 Giles Pass Apt. 386\\nJanestad, CO 59468-1096\",\n                \"poster\": \"images/posters/poster-20.svg\",\n                \"event_date\": \"2026-02-01\",\n                \"event_time\": \"2026-01-10T08:35:45.000000Z\",\n                \"capacity\": 231,\n                \"status\": \"published\",\n                \"published_at\": \"2026-01-10 07:51:30\",\n                \"created_at\": \"2026-01-10 07:51:30\",\n                \"updated_at\": \"2026-01-10 07:51:30\"\n            },\n            {\n                \"id\": 4,\n                \"title\": \"Impedit optio dolores vel maxime reiciendis aut.\",\n                \"slug\": \"impedit-optio-dolores-vel-maxime-reiciendis-aut-yp1J82\",\n                \"description\": \"Consequuntur asperiores voluptates blanditiis dolores culpa. Veniam error laborum aut. Esse praesentium est suscipit enim quisquam architecto quos. Laudantium adipisci vel qui minus assumenda aut nostrum.\\n\\nQuia eum eos maxime nemo quas. Sed aut alias quo doloribus commodi vero neque. Eum aut architecto dolorem ut nobis nisi aut quia. Accusantium quam repellendus nobis.\\n\\nExcepturi quia est provident necessitatibus commodi aliquam. Eius maiores aspernatur ea itaque quia id voluptatem. Eos officiis optio ratione corrupti eligendi provident ut eaque. Temporibus nobis libero veniam dicta sunt et enim quia.\",\n                \"category\": \"Seminar\",\n                \"location\": \"Jeraldfurt\",\n                \"address\": \"6684 Wilton Station Suite 835\\nSouth Emileton, NH 26347-8418\",\n                \"poster\": \"images/posters/poster-10.svg\",\n                \"event_date\": \"2026-01-25\",\n                \"event_time\": \"2026-01-10T11:42:14.000000Z\",\n                \"capacity\": 962,\n                \"status\": \"published\",\n                \"published_at\": \"2026-01-10 07:51:30\",\n                \"created_at\": \"2026-01-10 07:51:30\",\n                \"updated_at\": \"2026-01-10 07:51:30\"\n            },\n            {\n                \"id\": 5,\n                \"title\": \"Et voluptatem earum dolorum autem.\",\n                \"slug\": \"et-voluptatem-earum-dolorum-autem-niqp5J\",\n                \"description\": \"Fugiat quod omnis ex necessitatibus deserunt unde. Totam animi consequuntur officiis ducimus repellendus et hic illo. Est aut non est ut.\\n\\nIure aut iste sint. Ipsa nostrum sunt labore minus blanditiis minima.\\n\\nMollitia ex placeat neque omnis adipisci ea. Temporibus aliquid quibusdam necessitatibus aliquam pariatur eveniet voluptatibus. Repudiandae odit qui soluta ullam inventore ducimus. Sed maxime illum alias aut.\",\n                \"category\": \"Webinar\",\n                \"location\": \"Joeymouth\",\n                \"address\": \"66333 Bartoletti Port\\nSchulistview, TN 60817\",\n                \"poster\": \"images/posters/poster-16.svg\",\n                \"event_date\": \"2026-02-17\",\n                \"event_time\": \"2026-01-10T20:05:24.000000Z\",\n                \"capacity\": 247,\n                \"status\": \"published\",\n                \"published_at\": \"2026-01-10 07:51:30\",\n                \"created_at\": \"2026-01-10 07:51:30\",\n                \"updated_at\": \"2026-01-10 07:51:30\"\n            },\n            {\n                \"id\": 6,\n                \"title\": \"Nulla sint nesciunt laborum.\",\n                \"slug\": \"nulla-sint-nesciunt-laborum-lfaQR0\",\n                \"description\": \"Quae animi odio nemo est. Aliquam quos veniam debitis est rerum. Porro tempore non consequatur accusantium quibusdam. Eligendi eligendi quam quaerat eius reiciendis itaque praesentium.\\n\\nVoluptatibus enim voluptatum recusandae quibusdam illo. Et dolores quia omnis illo ea molestias. Fugit est delectus magnam sapiente ipsum quisquam hic eum. Sit rem possimus harum incidunt ut enim.\\n\\nModi eveniet vitae dolorem autem et. Ea rem ut amet reiciendis incidunt. Maxime et quae at et.\",\n                \"category\": \"Workshop\",\n                \"location\": \"West Brando\",\n                \"address\": \"95186 Kevin Shore\\nJamilville, MI 40741\",\n                \"poster\": \"images/posters/poster-18.svg\",\n                \"event_date\": \"2026-04-04\",\n                \"event_time\": \"2026-01-10T12:48:44.000000Z\",\n                \"capacity\": 198,\n                \"status\": \"published\",\n                \"published_at\": \"2026-01-10 07:51:30\",\n                \"created_at\": \"2026-01-10 07:51:30\",\n                \"updated_at\": \"2026-01-10 07:51:30\"\n            },\n            {\n                \"id\": 7,\n                \"title\": \"Fuga nemo occaecati aut.\",\n                \"slug\": \"fuga-nemo-occaecati-aut-PG4e3e\",\n                \"description\": \"Possimus perferendis qui illum quasi dicta et unde. Voluptas dolorem distinctio quas earum enim facilis. Sunt mollitia quasi omnis illum. Quia rem laboriosam vitae nisi eaque consequatur. Enim non est quisquam et.\\n\\nUt quasi esse eius beatae corporis. Qui quos molestiae aut ut. Voluptate voluptate tenetur rerum ut expedita incidunt sint. Consectetur reiciendis eum quia minus eos praesentium rerum nihil.\\n\\nDolores est voluptates deleniti officia natus excepturi. Quam quas autem quam neque nam ab. Eaque voluptatem ab quidem praesentium exercitationem non.\",\n                \"category\": \"Meetup\",\n                \"location\": \"South Tyler\",\n                \"address\": \"135 Tromp Meadow\\nCollinsport, LA 23376\",\n                \"poster\": \"images/posters/poster-1.svg\",\n                \"event_date\": \"2026-03-24\",\n                \"event_time\": \"2026-01-10T13:48:37.000000Z\",\n                \"capacity\": 651,\n                \"status\": \"published\",\n                \"published_at\": \"2026-01-10 07:51:30\",\n                \"created_at\": \"2026-01-10 07:51:30\",\n                \"updated_at\": \"2026-01-10 07:51:30\"\n            },\n            {\n                \"id\": 8,\n                \"title\": \"Aut non commodi nulla quidem rerum consequatur.\",\n                \"slug\": \"aut-non-commodi-nulla-quidem-rerum-consequatur-jtJBRy\",\n                \"description\": \"Perferendis voluptatibus ipsa alias qui et sequi id. Quasi qui consequuntur velit id illo. Ex ut rerum aut mollitia.\\n\\nEum nemo et hic vero laboriosam beatae. Enim quidem dolores iste doloribus. Totam optio modi non consectetur qui dolor hic.\\n\\nQuia ut odit optio et praesentium eius. Esse est numquam quae rerum pariatur ex cumque quae. Aliquid impedit id voluptatem quo qui quibusdam et. Eum sunt quibusdam asperiores nulla harum voluptates corrupti id.\",\n                \"category\": \"Meetup\",\n                \"location\": \"Lake Jany\",\n                \"address\": \"89960 German Center Suite 792\\nSheilaside, UT 75080-6794\",\n                \"poster\": \"images/posters/poster-13.svg\",\n                \"event_date\": \"2026-02-25\",\n                \"event_time\": \"2026-01-10T16:27:48.000000Z\",\n                \"capacity\": 186,\n                \"status\": \"published\",\n                \"published_at\": \"2026-01-10 07:51:30\",\n                \"created_at\": \"2026-01-10 07:51:30\",\n                \"updated_at\": \"2026-01-10 07:51:30\"\n            },\n            {\n                \"id\": 9,\n                \"title\": \"Quis facere quis amet quia.\",\n                \"slug\": \"quis-facere-quis-amet-quia-po1xfW\",\n                \"description\": \"Dolor nisi consequuntur blanditiis qui. Animi aperiam non cumque necessitatibus reiciendis sunt. Saepe dolores dolor odit consequatur earum.\\n\\nPlaceat et laboriosam provident voluptatibus culpa nulla sit. Quia officiis deserunt possimus facere voluptatum. Doloribus provident et nostrum. Minima ea enim aut eos repellendus.\\n\\nDolores aut alias sapiente mollitia qui. Eos exercitationem et consequatur aut aperiam. Odit quia necessitatibus et. Blanditiis assumenda placeat excepturi dolores dolores distinctio consectetur.\",\n                \"category\": \"Workshop\",\n                \"location\": \"Eileenchester\",\n                \"address\": \"224 Jenkins Mount Apt. 101\\nMarquisefurt, NH 55716-5278\",\n                \"poster\": \"images/posters/poster-7.svg\",\n                \"event_date\": \"2026-03-25\",\n                \"event_time\": \"2026-01-10T02:20:44.000000Z\",\n                \"capacity\": 756,\n                \"status\": \"published\",\n                \"published_at\": \"2026-01-10 07:51:30\",\n                \"created_at\": \"2026-01-10 07:51:30\",\n                \"updated_at\": \"2026-01-10 07:51:30\"\n            },\n            {\n                \"id\": 10,\n                \"title\": \"Quo perspiciatis et non nostrum.\",\n                \"slug\": \"quo-perspiciatis-et-non-nostrum-wKvtH9\",\n                \"description\": \"At magnam molestiae ullam iste vel eligendi id. Deserunt et praesentium quia. Eaque est ipsam repudiandae et qui exercitationem quidem et.\\n\\nAut voluptas ex enim architecto animi tempore amet. Velit veritatis quas eius aut itaque id. Odit ex eveniet dolorem assumenda. Et nemo explicabo odio nostrum in aut.\\n\\nQuia aliquam omnis delectus blanditiis. Ut odio ex rerum et aut fuga. Facilis distinctio aspernatur sunt nemo at quod ducimus. In nam asperiores debitis neque.\",\n                \"category\": \"Meetup\",\n                \"location\": \"Lake Brittany\",\n                \"address\": \"992 Kelsie Mill Apt. 406\\nEast Britney, WY 97026-7602\",\n                \"poster\": \"images/posters/poster-15.svg\",\n                \"event_date\": \"2026-01-24\",\n                \"event_time\": \"2026-01-10T12:59:59.000000Z\",\n                \"capacity\": 405,\n                \"status\": \"published\",\n                \"published_at\": \"2026-01-10 07:51:30\",\n                \"created_at\": \"2026-01-10 07:51:30\",\n                \"updated_at\": \"2026-01-10 07:51:30\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://localhost:8000/api/events?page=1\",\n            \"last\": \"http://localhost:8000/api/events?page=2\",\n            \"prev\": null,\n            \"next\": \"http://localhost:8000/api/events?page=2\"\n        },\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 2,\n            \"links\": [\n                {\n                    \"url\": null,\n                    \"label\": \"&laquo; Previous\",\n                    \"page\": null,\n                    \"active\": false\n                },\n                {\n                    \"url\": \"http://localhost:8000/api/events?page=1\",\n                    \"label\": \"1\",\n                    \"page\": 1,\n                    \"active\": true\n                },\n                {\n                    \"url\": \"http://localhost:8000/api/events?page=2\",\n                    \"label\": \"2\",\n                    \"page\": 2,\n                    \"active\": false\n                },\n                {\n                    \"url\": \"http://localhost:8000/api/events?page=2\",\n                    \"label\": \"Next &raquo;\",\n                    \"page\": 2,\n                    \"active\": false\n                }\n            ],\n            \"path\": \"http://localhost:8000/api/events\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 20\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Show Event",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/events/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"events",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Show Event",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8000/api/events/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"events",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Jan 2026 10:46:55 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Detail event berhasil diambil\",\n    \"data\": {\n        \"id\": 2,\n        \"title\": \"Cum sapiente blanditiis consectetur.\",\n        \"slug\": \"cum-sapiente-blanditiis-consectetur-0lLPxQ\",\n        \"description\": \"Dolorum enim et officia praesentium vel. Perspiciatis quaerat natus impedit rem hic iusto.\\n\\nIpsum culpa aut nihil iste. Voluptatem nihil iste ex sit. Aut libero nostrum consequatur.\\n\\nNesciunt vel libero aut culpa quia neque consequatur. Commodi est necessitatibus adipisci ratione.\",\n        \"category\": \"Webinar\",\n        \"location\": \"Croninberg\",\n        \"address\": \"1390 Oberbrunner Springs Apt. 075\\nEthelynbury, NV 31058-1498\",\n        \"poster\": \"images/posters/poster-3.svg\",\n        \"event_date\": \"2026-02-16\",\n        \"event_time\": \"2026-01-10T07:06:08.000000Z\",\n        \"capacity\": 794,\n        \"status\": \"published\",\n        \"published_at\": \"2026-01-10 07:51:30\",\n        \"created_at\": \"2026-01-10 07:51:30\",\n        \"updated_at\": \"2026-01-10 07:51:30\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Tiket Even",
+			"item": [
+				{
+					"name": "List Tickets",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/tickets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tickets"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Tickets",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8000/api/tickets",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tickets"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Jan 2026 11:34:11 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Daftar tiket\",\n    \"data\": {\n        \"data\": [\n            {\n                \"id\": 1,\n                \"event_id\": 1,\n                \"name\": \"General Admission\",\n                \"description\": \"optional\",\n                \"price\": \"50000.00\",\n                \"quota\": 100,\n                \"sold\": 0,\n                \"available\": 100,\n                \"sale_start\": \"2026-01-09 00:00:00\",\n                \"sale_end\": \"2026-03-23 00:00:00\",\n                \"is_active\": true,\n                \"created_at\": \"2026-01-10 11:32:57\",\n                \"updated_at\": \"2026-01-10 11:32:57\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://localhost:8000/api/tickets?page=1\",\n            \"last\": \"http://localhost:8000/api/tickets?page=1\",\n            \"prev\": null,\n            \"next\": null\n        },\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"links\": [\n                {\n                    \"url\": null,\n                    \"label\": \"&laquo; Previous\",\n                    \"page\": null,\n                    \"active\": false\n                },\n                {\n                    \"url\": \"http://localhost:8000/api/tickets?page=1\",\n                    \"label\": \"1\",\n                    \"page\": 1,\n                    \"active\": true\n                },\n                {\n                    \"url\": null,\n                    \"label\": \"Next &raquo;\",\n                    \"page\": null,\n                    \"active\": false\n                }\n            ],\n            \"path\": \"http://localhost:8000/api/tickets\",\n            \"per_page\": 10,\n            \"to\": 1,\n            \"total\": 1\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Detail Ticket",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/events/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"events",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Detail Ticket",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8000/api/events/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"events",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Jan 2026 11:37:27 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Detail event berhasil diambil\",\n    \"data\": {\n        \"id\": 1,\n        \"title\": \"Velit voluptas praesentium quia.\",\n        \"slug\": \"velit-voluptas-praesentium-quia-CBiDKP\",\n        \"description\": \"Ipsam cum incidunt provident consequuntur. Quod qui id nihil id sit qui.\\n\\nUt laborum aut consequuntur enim consequatur ut et. Rerum illo suscipit sint dicta quia iste dolorem.\\n\\nAut nemo ea quibusdam harum minima ipsam. Qui delectus non qui minima rerum. Iusto velit sequi eligendi est amet labore impedit nobis. Rerum nobis quidem quod aperiam ipsam distinctio enim. Nihil est ad repellat et eos id.\",\n        \"category\": \"Webinar\",\n        \"location\": \"North Zetta\",\n        \"address\": \"7215 Kutch Via\\nPort Ameliamouth, RI 58944-9975\",\n        \"poster\": \"images/posters/poster-4.svg\",\n        \"event_date\": \"2026-02-18\",\n        \"event_time\": \"2026-01-10T02:23:27.000000Z\",\n        \"capacity\": 185,\n        \"status\": \"published\",\n        \"published_at\": \"2026-01-10 07:51:30\",\n        \"created_at\": \"2026-01-10 07:51:30\",\n        \"updated_at\": \"2026-01-10 07:51:30\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Buat tiket",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNzY4MDQ2OTgwLCJleHAiOjE3NjgwNTA1ODAsInN1YiI6MTAsInNjb3BlcyI6WyJvcmdhbml6ZXIiXX0.oNEeZsSEGWxKVeQH3seQTgb6gusGWmXxu50BwdfhIhk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"event_id\":22,               // required, exists:events,id\r\n  \"name\": \"General Man\",   // required, string, max 255\r\n  \"description\": \"optional\",     // nullable, string\r\n  \"price\": 50000,                // required, numeric >= 0\r\n  \"quota\": 100,                  // required, integer >= 1\r\n  \"sale_start\": \"2026-01-9\",    // nullable, date (ISO)\r\n  \"sale_end\": \"2026-03-23\",      // nullable, date, after:sale_start\r\n  \"is_active\": true              // boolean\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/tickets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tickets"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Buat tiket",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"event_id\":22,               // required, exists:events,id\r\n  \"name\": \"General Man\",   // required, string, max 255\r\n  \"description\": \"optional\",     // nullable, string\r\n  \"price\": 50000,                // required, numeric >= 0\r\n  \"quota\": 100,                  // required, integer >= 1\r\n  \"sale_start\": \"2026-01-9\",    // nullable, date (ISO)\r\n  \"sale_end\": \"2026-03-23\",      // nullable, date, after:sale_start\r\n  \"is_active\": true              // boolean\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/tickets",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tickets"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Jan 2026 12:10:59 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Tiket berhasil dibuat\",\n    \"data\": {\n        \"id\": 3,\n        \"event_id\": 22,\n        \"name\": \"General Man\",\n        \"description\": \"optional\",\n        \"price\": \"50000.00\",\n        \"quota\": 100,\n        \"sold\": 0,\n        \"available\": 100,\n        \"sale_start\": \"2026-01-09 00:00:00\",\n        \"sale_end\": \"2026-03-23 00:00:00\",\n        \"is_active\": true,\n        \"created_at\": \"2026-01-10 12:10:59\",\n        \"updated_at\": \"2026-01-10 12:10:59\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update tiket",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNzY4MDQ2OTgwLCJleHAiOjE3NjgwNTA1ODAsInN1YiI6MTAsInNjb3BlcyI6WyJvcmdhbml6ZXIiXX0.oNEeZsSEGWxKVeQH3seQTgb6gusGWmXxu50BwdfhIhk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "0",
+								"name": "content-length",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"event_id\":22,               // required, exists:events,id\r\n  \"name\": \"General Man Update\",   // required, string, max 255\r\n  \"description\": \"optional\",     // nullable, string\r\n  \"price\": 50000,                // required, numeric >= 0\r\n  \"quota\": 100,                  // required, integer >= 1\r\n  \"sale_start\": \"2026-01-9\",    // nullable, date (ISO)\r\n  \"sale_end\": \"2026-03-23\",      // nullable, date, after:sale_start\r\n  \"is_active\": true              // boolean\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/tickets/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tickets",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update tiket",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"event_id\":22,               // required, exists:events,id\r\n  \"name\": \"General Man Update\",   // required, string, max 255\r\n  \"description\": \"optional\",     // nullable, string\r\n  \"price\": 50000,                // required, numeric >= 0\r\n  \"quota\": 100,                  // required, integer >= 1\r\n  \"sale_start\": \"2026-01-9\",    // nullable, date (ISO)\r\n  \"sale_end\": \"2026-03-23\",      // nullable, date, after:sale_start\r\n  \"is_active\": true              // boolean\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/tickets/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tickets",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Jan 2026 12:11:55 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Tiket berhasil diperbarui\",\n    \"data\": {\n        \"id\": 3,\n        \"event_id\": 22,\n        \"name\": \"General Man Update\",\n        \"description\": \"optional\",\n        \"price\": \"50000.00\",\n        \"quota\": 100,\n        \"sold\": 0,\n        \"available\": 100,\n        \"sale_start\": \"2026-01-09 00:00:00\",\n        \"sale_end\": \"2026-03-23 00:00:00\",\n        \"is_active\": true,\n        \"created_at\": \"2026-01-10 12:10:59\",\n        \"updated_at\": \"2026-01-10 12:11:55\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Hapus tiket",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNzY4MDQ2OTgwLCJleHAiOjE3NjgwNTA1ODAsInN1YiI6MTAsInNjb3BlcyI6WyJvcmdhbml6ZXIiXX0.oNEeZsSEGWxKVeQH3seQTgb6gusGWmXxu50BwdfhIhk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/tickets/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tickets",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Hapus tiket",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/tickets/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tickets",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.25",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 10 Jan 2026 12:15:31 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Tiket berhasil dihapus\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

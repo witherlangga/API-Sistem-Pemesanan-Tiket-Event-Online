@@ -143,9 +143,7 @@
             
             @if($transaction->status === 'pending' && !$transaction->isExpired())
                 @if(!$transaction->payment_proof)
-                    <a href="{{ route('transactions.payment', $transaction) }}" class="flex-1 text-center bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700">
-                        Upload Bukti Pembayaran
-                    </a>
+                    <a href="{{ route('transactions.payment', $transaction) }}" class="flex-1 text-center bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700">Upload Bukti Pembayaran</a>
                 @endif
                 
                 <form method="POST" action="{{ route('transactions.cancel', $transaction) }}" class="flex-1" onsubmit="return confirm('Apakah Anda yakin ingin membatalkan transaksi ini?')">
@@ -158,9 +156,7 @@
             @endif
 
             @if($transaction->status === 'paid')
-                <a href="#" class="flex-1 text-center bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700">
-                    Download Tiket
-                </a>
+                <a href="#" class="flex-1 text-center bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700">Download Tiket</a>
             @endif
         </div>
 

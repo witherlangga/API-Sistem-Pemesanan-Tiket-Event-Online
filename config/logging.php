@@ -127,6 +127,15 @@ return [
             'path' => storage_path('logs/laravel.log'),
         ],
 
+        // Activity file log for structured activity logs (JSON)
+        'activity' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/activity.log'),
+            'level' => env('LOG_LEVEL', 'info'),
+            'days' => 30,
+            'tap' => [App\Logging\CustomizeActivityLog::class],
+        ],
+
     ],
 
 ];

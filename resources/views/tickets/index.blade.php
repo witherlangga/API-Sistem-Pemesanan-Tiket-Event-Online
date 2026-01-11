@@ -8,25 +8,11 @@
             <p class="text-gray-600 mt-2">Atur jenis tiket dan kuota untuk event Anda</p>
         </div>
         <div class="flex gap-3">
-            <a href="{{ route('tickets.create', $event) }}" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700">
-                Tambah Tiket
-            </a>
-            <a href="{{ route('events.show', $event) }}" class="bg-gray-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-700">
-                Kembali
-            </a>
-        </div>
-    </div>
-
-    @if(session('success'))
-        <div class="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
-            {{ session('success') }}
-        </div>
-    @endif
+            <a href="{{ route('tickets.create', $event) }}" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700">Tambah Tiket</a>
+            <a href="{{ route('events.show', $event) }}" class="bg-gray-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-700">Kembali</a>
 
     @if(session('error'))
-        <div class="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
-            {{ session('error') }}
-        </div>
+        <x-alert type="error">{{ session('error') }}</x-alert>
     @endif
 
     @if($tickets->isEmpty())
@@ -36,9 +22,7 @@
             </svg>
             <h3 class="mt-4 text-lg font-medium text-gray-900">Belum ada tiket</h3>
             <p class="mt-2 text-gray-500">Mulai tambahkan jenis tiket untuk event Anda</p>
-            <a href="{{ route('tickets.create', $event) }}" class="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700">
-                Tambah Tiket Pertama
-            </a>
+            <a href="{{ route('tickets.create', $event) }}" class="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700">Tambah Tiket Pertama</a>
         </div>
     @else
         <div class="bg-white rounded-lg shadow overflow-hidden">

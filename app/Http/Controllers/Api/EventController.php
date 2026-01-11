@@ -6,24 +6,44 @@ use App\Http\Controllers\Controller;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Http\Controllers\Api\ApiResponse;
 
 class EventController extends Controller
 {
+    use ApiResponse;
     /**
      * GET /api/events
      * Menampilkan event yang sudah dipublish (untuk publik)
      */
-    public function index()
+    public function index(Request $request)
     {
-        $events = Event::published()
-            ->latest()
-            ->paginate(10);
+        $query = Event::published();
 
-        return response()->json([
-            'status'  => true,
-            'message' => 'Daftar event publik berhasil diambil',
-            'data'    => $events
-        ]);
+        if ($request->filled('category')) {
+            $query->where('category', $request->get('category'));
+        }
+
+        if ($request->filled('search')) {
+            $q = $request->get('search');
+            $query->where(function ($qbuilder) use ($q) {
+                $qbuilder->where('title', 'like', "%{$q}%")
+                    ->orWhere('description', 'like', "%{$q}%");
+            });
+        }
+
+        if ($request->filled('date_from')) {
+            $query->where('event_date', '>=', $request->get('date_from'));
+        }
+
+        if ($request->filled('date_to')) {
+            $query->where('event_date', '<=', $request->get('date_to'));
+        }
+
+        $events = $query->latest()->paginate(10);
+
+        // use resource collection for structured responses
+        $data = \App\Http\Resources\EventResource::collection($events)->response()->getData(true);
+        return $this->success('Daftar event publik berhasil diambil', $data);
     }
 
     /**
@@ -44,7 +64,7 @@ class EventController extends Controller
         ]);
 
         $event = Event::create([
-            'user_id'      => 1, // simulasi penyelenggara
+            'user_id'      => $request->user()->id,
             'title'        => $validated['title'],
             'slug'         => Str::slug($validated['title']),
             'description'  => $validated['description'] ?? null,
@@ -58,11 +78,12 @@ class EventController extends Controller
             'published_at' => null,
         ]);
 
-        return response()->json([
-            'status'  => true,
-            'message' => 'Event berhasil dibuat sebagai draft',
-            'data'    => $event
-        ], 201);
+        try {
+            \App\Models\ActivityLog::record(request()->user()->id ?? null, 'event:create', $event, [], request());
+        } catch (\Exception $e) {
+        }
+
+        return $this->success('Event berhasil dibuat sebagai draft', $event, 201);
     }
 
     /**
@@ -71,11 +92,8 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        return response()->json([
-            'status'  => true,
-            'message' => 'Detail event berhasil diambil',
-            'data'    => $event
-        ]);
+        $data = new \App\Http\Resources\EventResource($event);
+        return $this->success('Detail event berhasil diambil', $data);
     }
 
     /**
@@ -84,6 +102,11 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
+        // ownership check
+        if ($request->user()->id !== $event->user_id) {
+            return response()->json(['status' => false, 'message' => 'Forbidden'], 403);
+        }
+
         if ($event->isPublished()) {
             return response()->json([
                 'status'  => false,
@@ -107,12 +130,11 @@ class EventController extends Controller
         }
 
         $event->update($validated);
-
-        return response()->json([
-            'status'  => true,
-            'message' => 'Event berhasil diperbarui',
-            'data'    => $event
-        ]);
+        try {
+            \App\Models\ActivityLog::record(request()->user()->id ?? null, 'event:update', $event, $validated, request());
+        } catch (\Exception $e) {
+        }
+        return $this->success('Event berhasil diperbarui', $event);
     }
 
     /**
@@ -121,29 +143,29 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        $event->delete();
+        $user = request()->user();
+        if ($user->id !== $event->user_id) {
+            return response()->json(['status' => false, 'message' => 'Forbidden'], 403);
+        }
 
-        return response()->json([
-            'status'  => true,
-            'message' => 'Event berhasil dihapus'
-        ]);
+        $event->delete();
+        try {
+            \App\Models\ActivityLog::record(request()->user()->id ?? null, 'event:delete', $event, [], request());
+        } catch (\Exception $e) {
+        }
+        return $this->success('Event berhasil dihapus');
     }
 
     /**
      * GET /api/my-events
      * Menampilkan event milik penyelenggara (semua status)
      */
-    public function myEvents()
+    public function myEvents(Request $request)
     {
-        $events = Event::where('user_id', 1)
+        $events = Event::where('user_id', $request->user()->id)
             ->latest()
             ->paginate(10);
-
-        return response()->json([
-            'status'  => true,
-            'message' => 'Daftar event milik penyelenggara',
-            'data'    => $events
-        ]);
+        return $this->success('Daftar event milik penyelenggara', $events);
     }
 
     /**
@@ -152,6 +174,11 @@ class EventController extends Controller
      */
     public function publish(Event $event)
     {
+        $user = request()->user();
+        if ($user->id !== $event->user_id) {
+            return response()->json(['status' => false, 'message' => 'Forbidden'], 403);
+        }
+
         if ($event->status !== 'draft') {
             return response()->json([
                 'status'  => false,
@@ -163,11 +190,11 @@ class EventController extends Controller
             'status'       => 'published',
             'published_at' => now()
         ]);
-
-        return response()->json([
-            'status'  => true,
-            'message' => 'Event berhasil dipublish'
-        ]);
+        try {
+            \App\Models\ActivityLog::record(request()->user()->id ?? null, 'event:publish', $event, [], request());
+        } catch (\Exception $e) {
+        }
+        return $this->success('Event berhasil dipublish');
     }
 
     /**
@@ -176,13 +203,18 @@ class EventController extends Controller
      */
     public function cancel(Event $event)
     {
+        $user = request()->user();
+        if ($user->id !== $event->user_id) {
+            return response()->json(['status' => false, 'message' => 'Forbidden'], 403);
+        }
+
         $event->update([
             'status' => 'cancelled'
         ]);
-
-        return response()->json([
-            'status'  => true,
-            'message' => 'Event berhasil dibatalkan'
-        ]);
+        try {
+            \App\Models\ActivityLog::record(request()->user()->id ?? null, 'event:cancel', $event, [], request());
+        } catch (\Exception $e) {
+        }
+        return $this->success('Event berhasil dibatalkan');
     }
 }

@@ -8,6 +8,7 @@ use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class TicketController extends Controller
 {
@@ -128,11 +129,24 @@ class TicketController extends Controller
             'is_active' => 'boolean',
         ]);
 
-        $event->tickets()->create($request->all());
+        try {
+            $event->tickets()->create($request->all());
 
-        return redirect()
-            ->route('tickets.index', $event)
-            ->with('success', 'Tiket berhasil ditambahkan.');
+            return redirect()
+                ->route('tickets.index', $event)
+                ->with('success', 'Tiket berhasil ditambahkan.');
+
+        } catch (\Exception $e) {
+            Log::error('Failed to create ticket', [
+                'event_id' => $event->id,
+                'user_id' => Auth::id(),
+                'request' => $request->all(),
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+
+            return back()->with('error', 'Terjadi kesalahan saat menyimpan tiket: ' . $e->getMessage());
+        }
     }
 
     /**

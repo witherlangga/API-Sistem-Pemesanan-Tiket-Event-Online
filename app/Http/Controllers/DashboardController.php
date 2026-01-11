@@ -16,19 +16,31 @@ class DashboardController extends Controller
             // Provide a lightweight guest object for the view
             $guest = (object) ['name' => 'Guest'];
             // show latest published events to guests
-            $events = Event::published()->latest()->get();
+            try {
+                $events = Event::published()->latest()->get();
+            } catch (\Exception $e) {
+                $events = collect();
+            }
             return view('dashboard.customer', ['user' => $guest, 'events' => $events]);
         }
 
         // If logged in, show role-specific dashboard
         if ($user->isOrganizer()) {
             // organizer sees only their events
-            $events = Event::where('user_id', $user->id)->latest()->get();
+            try {
+                $events = Event::where('user_id', $user->id)->latest()->get();
+            } catch (\Exception $e) {
+                $events = collect();
+            }
             return view('dashboard.organizer', ['user' => $user, 'events' => $events]);
         }
 
         // default customer view shows published events
-        $events = Event::published()->latest()->get();
+        try {
+            $events = Event::published()->latest()->get();
+        } catch (\Exception $e) {
+            $events = collect();
+        }
         return view('dashboard.customer', ['user' => $user, 'events' => $events]);
     }
 }

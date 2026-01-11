@@ -79,15 +79,9 @@
                         @endif
 
                         <div class="flex gap-2">
-                            <a href="{{ route('transactions.show', $transaction) }}" 
-                               class="flex-1 text-center bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                                Lihat Detail
-                            </a>
+                            <a href="{{ route('transactions.show', $transaction) }}" class="flex-1 text-center bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700">Lihat Detail</a>
                             @if($transaction->status === 'pending' && !$transaction->isExpired())
-                                <a href="{{ route('transactions.payment', $transaction) }}" 
-                                   class="flex-1 text-center bg-green-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-green-700 transition-colors">
-                                    Bayar Sekarang
-                                </a>
+                                <a href="{{ route('transactions.payment', $transaction) }}" class="flex-1 text-center bg-green-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-green-700">Bayar Sekarang</a>
                             @endif
                         </div>
                     </div>

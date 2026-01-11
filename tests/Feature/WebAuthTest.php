@@ -89,6 +89,6 @@ class WebAuthTest extends TestCase
         /** @var \App\Models\User $user */
 
         $this->actingAs($user);
-        $this->get('/dashboard')->assertSee('Organizer Dashboard');
+        $this->get('/dashboard')->assertSee('Dashboard Organizer');
     }
 }

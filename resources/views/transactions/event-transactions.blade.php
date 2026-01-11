@@ -7,9 +7,7 @@
             <h1 class="text-3xl font-bold text-gray-900">Transaksi Event: {{ $event->title }}</h1>
             <p class="text-gray-600 mt-2">Kelola transaksi tiket dari event Anda</p>
         </div>
-        <a href="{{ route('events.show', $event) }}" class="bg-gray-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-700">
-            Kembali ke Event
-        </a>
+        <a href="{{ route('events.show', $event) }}" class="bg-gray-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-700">Kembali ke Event</a>
     </div>
 
     @if(session('success'))

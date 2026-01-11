@@ -11,10 +11,22 @@ class EventWebController extends Controller
     /**
      * Menampilkan daftar event (semua status)
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Events list has been moved to the dashboard pages. Redirect to dashboard.
-        return redirect('/dashboard');
+        $query = Event::published()->latest();
+
+        if ($request->filled('search')) {
+            $q = $request->get('search');
+            $query->where(function ($qb) use ($q) {
+                $qb->where('title', 'like', "%{$q}%")
+                   ->orWhere('description', 'like', "%{$q}%")
+                   ->orWhere('location', 'like', "%{$q}%");
+            });
+        }
+
+        $events = $query->paginate(20)->withQueryString();
+
+        return view('events.index', compact('events'));
     }
 
     /**

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-7xl mx-auto py-8">
+<div class="w-full py-8 px-6 lg:px-12">
     <!-- Header Section -->
     <div class="mb-8">
         <div class="flex items-center justify-between">
@@ -85,107 +85,64 @@
         </div>
     @endif
 
-    <!-- Events Table -->
-    <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
-        <div class="px-6 py-5 border-b border-gray-200 bg-gradient-to-r from-gray-50 to-white">
-            <h2 class="text-xl font-bold text-gray-900">Event Anda</h2>
-        </div>
+    <!-- Events Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        @forelse ($events as $event)
+            <div class="bg-white rounded-2xl shadow p-4 flex flex-col">
+                <div class="h-40 overflow-hidden rounded mb-3">
+                    <img src="{{ asset($event->poster ?? 'images/hero-events.svg') }}" alt="{{ $event->title }}" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-lg font-semibold">{{ $event->title }}</h3>
+                    <p class="text-sm text-gray-500">{{ $event->event_date }} • {{ $event->location }}</p>
+                </div>
 
-        <div class="overflow-x-auto">
-            <table class="w-full">
-                <thead class="bg-gray-50 border-b border-gray-200">
-                <tr>
-                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Judul Event</th>
-                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Lokasi</th>
-                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Tanggal</th>
-                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Status</th>
-                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Aksi</th>
-                </tr>
-                </thead>
-                <tbody class="bg-white divide-y divide-gray-100">
-                @forelse ($events as $event)
-                    <tr class="hover:bg-gray-50">
-                        <td class="p-2 border font-medium">{{ $event->title }}</td>
-                        <td class="p-2 border">{{ $event->location }}</td>
-                        <td class="p-2 border">{{ $event->event_date }}</td>
-                        <td class="p-2 border">
-                            @if ($event->status === 'draft')
-                                <span class="px-2 py-1 bg-gray-300 rounded text-xs">Draft</span>
-                            @elseif ($event->status === 'published')
-                                <span class="px-2 py-1 bg-green-500 text-white rounded text-xs">Published</span>
-                            @else
-                                <span class="px-2 py-1 bg-red-500 text-white rounded text-xs">Cancelled</span>
-                            @endif
-                        </td>
-                        <td class="p-2 border">
-                            <div class="flex flex-wrap gap-2 items-center">
-                                {{-- Kelola Tiket - TOMBOL BARU --}}
-                                <a href="/events/{{ $event->id }}/tickets" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-xs font-semibold">
-                                    🎫 Kelola Tiket
-                                </a>
+                <div class="mt-4 flex items-center justify-between">
+                    <div>
+                        @if ($event->status === 'draft')
+                            <span class="px-2 py-1 bg-gray-200 rounded text-xs">Draft</span>
+                        @elseif ($event->status === 'published')
+                            <span class="px-2 py-1 bg-green-500 text-white rounded text-xs">Published</span>
+                        @else
+                            <span class="px-2 py-1 bg-red-500 text-white rounded text-xs">Cancelled</span>
+                        @endif
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <a href="/events/{{ $event->id }}/tickets" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm">🎫 Kelola Tiket</a>
+                        <a href="/events/{{ $event->id }}/transactions" class="bg-purple-600 hover:bg-purple-700 text-white px-3 py-1 rounded text-sm">💰 Transaksi</a>
+                    </div>
+                </div>
 
-                                {{-- Lihat Transaksi - TOMBOL BARU --}}
-                                <a href="/events/{{ $event->id }}/transactions" class="bg-purple-600 hover:bg-purple-700 text-white px-3 py-1 rounded text-xs">
-                                    💰 Transaksi
-                                </a>
+                <div class="mt-3 flex gap-2">
+                    @if ($event->status === 'draft')
+                        <a href="/events/{{ $event->id }}/edit" class="flex-1 inline-flex items-center justify-center bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded">Edit</a>
+                        <form action="/events/{{ $event->id }}/publish" method="POST" class="flex-1">
+                            @csrf
+                            <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded">Terbitkan</button>
+                        </form>
+                    @elseif ($event->status === 'published')
+                        <form action="/events/{{ $event->id }}/cancel" method="POST" class="flex-1">
+                            @csrf
+                            <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white px-3 py-2 rounded">Batalkan</button>
+                        </form>
+                    @endif
 
-                                {{-- Edit (hanya draft) --}}
-                                @if ($event->status === 'draft')
-                                    <a href="/events/{{ $event->id }}/edit" class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-xs">Edit</a>
-                                @endif
-
-                                {{-- Lihat Detail --}}
-                                <a href="{{ url('/events/' . $event->id) }}" class="text-sm text-blue-600 hover:underline">Lihat</a>
-
-                                {{-- Publish --}}
-                                @if ($event->status === 'draft')
-                                    <form action="/events/{{ $event->id }}/publish" method="POST" class="inline">
-                                        @csrf
-                                        <button class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-xs">Terbitkan</button>
-                                    </form>
-                                @endif
-
-                                {{-- Cancel --}}
-                                @if ($event->status === 'published')
-                                    <form action="/events/{{ $event->id }}/cancel" method="POST" class="inline">
-                                        @csrf
-                                        <button class="bg-orange-500 hover:bg-orange-600 text-white px-3 py-1 rounded text-xs">Batalkan</button>
-                                    </form>
-                                @endif
-
-                                {{-- Delete --}}
-                                <form action="/events/{{ $event->id }}" method="POST" onsubmit="return confirm('Yakin hapus event ini?')" class="inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-xs">Hapus</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="5" class="px-6 py-12">
-                            <div class="text-center">
-                                <svg class="mx-auto h-16 w-16 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                                </svg>
-                                <h3 class="mt-4 text-lg font-medium text-gray-900">Belum ada event</h3>
-                                <p class="mt-2 text-sm text-gray-500">Mulai dengan membuat event pertama Anda!</p>
-                                <div class="mt-6">
-                                    <a href="/events/create" class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold shadow-lg transition-all">
-                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-                                        </svg>
-                                        Buat Event Pertama
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                @endforelse
-                </tbody>
-            </table>
-        </div>
+                    <form action="/events/{{ $event->id }}" method="POST" onsubmit="return confirm('Yakin hapus event ini?')" class="flex-1">
+                        @csrf
+                        @method('DELETE')
+                        <button class="w-full bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded">Hapus</button>
+                    </form>
+                </div>
+            </div>
+        @empty
+            <div class="col-span-full text-center p-6 bg-white rounded-2xl">
+                <h3 class="text-lg font-medium">Belum ada event</h3>
+                <p class="text-sm text-gray-500">Mulai dengan membuat event pertama Anda!</p>
+                <div class="mt-4">
+                    <a href="/events/create" class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold">Buat Event Pertama</a>
+                </div>
+            </div>
+        @endforelse
     </div>
 </div>
 @endsection

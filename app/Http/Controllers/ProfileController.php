@@ -43,10 +43,15 @@ class ProfileController extends Controller
             $attributes[$k] = $v;
         }
 
+        // Load latest paid transactions and extract their related events (filter missing)
+        $joinedTransactions = $user->transactions()->with('event')->paid()->latest('paid_at')->take(12)->get();
+        $joinedEvents = $joinedTransactions->map->event->filter()->values();
+
         return view('profile.show', [
             'user' => $user,
             'pictureExists' => $pictureExists,
             'attributes' => $attributes,
+            'joinedEvents' => $joinedEvents,
         ]);
     }
 
