@@ -53,3 +53,13 @@ Ikuti langkah-langkah berikut untuk menjalankan aplikasi secara lokal:
 - Postman public documentation: https://documenter.getpostman.com/view/49032388/2sBXVfiWLE
 ---
 
+## Anggota Kelompok
+- Erlangga Syafutra - 2301010192
+  username Github : witherlangga
+
+- Dimas Okta Rizki - 2301010196
+  username Github : RexxyKY
+
+- M.Erlangga Ardiansyah - 2301010210
+  username Github : Ardian210
+
