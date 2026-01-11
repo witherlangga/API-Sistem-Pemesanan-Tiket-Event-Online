@@ -7,7 +7,7 @@
         <div class="w-full order-2 md:order-1">
             <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-2xl transform transition-all duration-300 hover:shadow-3xl">
                 <div class="text-center mb-8">
-                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#F53003] to-[#ff6b3d] rounded-full mb-4 shadow-lg">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-500 rounded-full mb-4 shadow-lg">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
                         </svg>
@@ -46,7 +46,7 @@
                                 name="name" 
                                 type="text"
                                 value="{{ old('name') }}" 
-                                class="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F53003] focus:border-transparent transition duration-200" 
+                                class="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition duration-200" 
                                 placeholder="Masukkan nama lengkap"
                                 required
                             />
@@ -65,7 +65,7 @@
                                 name="email" 
                                 type="email"
                                 value="{{ old('email') }}" 
-                                class="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F53003] focus:border-transparent transition duration-200" 
+                                class="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition duration-200" 
                                 placeholder="nama@email.com"
                                 required
                             />
@@ -84,7 +84,7 @@
                                 <input 
                                     name="password" 
                                     type="password" 
-                                    class="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F53003] focus:border-transparent transition duration-200" 
+                                    class="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition duration-200" 
                                     placeholder="Min. 8 karakter"
                                     required
                                 />
@@ -102,7 +102,7 @@
                                 <input 
                                     name="password_confirmation" 
                                     type="password" 
-                                    class="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F53003] focus:border-transparent transition duration-200" 
+                                    class="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition duration-200" 
                                     placeholder="Ulangi password"
                                     required
                                 />
@@ -113,20 +113,20 @@
                     <div class="relative">
                         <label class="block text-sm font-semibold text-gray-700 mb-2">Daftar Sebagai</label>
                         <div class="grid grid-cols-2 gap-4">
-                            <label class="relative flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-[#F53003] transition duration-200 {{ old('role') == 'customer' || !old('role') ? 'border-[#F53003] bg-red-50' : '' }}">
+                            <label class="relative flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-600 transition duration-200 {{ old('role') == 'customer' || !old('role') ? 'border-blue-600 bg-blue-50' : '' }}">
                                 <input type="radio" name="role" value="customer" class="sr-only" {{ old('role') == 'customer' || !old('role') ? 'checked' : '' }} required>
                                 <div class="flex flex-col items-center w-full">
-                                    <svg class="w-8 h-8 text-[#F53003] mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-8 h-8 text-blue-600 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
                                     </svg>
                                     <span class="text-sm font-medium text-gray-800">Customer</span>
                                     <span class="text-xs text-gray-500 text-center mt-1">Pembeli Tiket</span>
                                 </div>
                             </label>
-                            <label class="relative flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-[#F53003] transition duration-200 {{ old('role') == 'organizer' ? 'border-[#F53003] bg-red-50' : '' }}">
+                            <label class="relative flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-600 transition duration-200 {{ old('role') == 'organizer' ? 'border-blue-600 bg-blue-50' : '' }}">
                                 <input type="radio" name="role" value="organizer" class="sr-only" {{ old('role') == 'organizer' ? 'checked' : '' }}>
                                 <div class="flex flex-col items-center w-full">
-                                    <svg class="w-8 h-8 text-[#F53003] mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-8 h-8 text-blue-600 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                                     </svg>
                                     <span class="text-sm font-medium text-gray-800">Organizer</span>
@@ -143,32 +143,32 @@
                         <div class="space-y-4">
                             <div>
                                 <label class="block text-sm text-gray-600 mb-1">Nomor Telepon</label>
-                                <input name="phone" value="{{ old('phone') }}" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F53003] focus:border-transparent" placeholder="+62" />
+                                <input name="phone" value="{{ old('phone') }}" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="+62" />
                             </div>
 
                             <div>
                                 <label class="block text-sm text-gray-600 mb-1">Website</label>
-                                <input name="website" value="{{ old('website') }}" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F53003] focus:border-transparent" placeholder="https://example.com" />
+                                <input name="website" value="{{ old('website') }}" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="https://example.com" />
                             </div>
 
                             <div>
                                 <label class="block text-sm text-gray-600 mb-1">Alamat</label>
-                                <input name="address" value="{{ old('address') }}" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F53003] focus:border-transparent" />
+                                <input name="address" value="{{ old('address') }}" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" />
                             </div>
 
                             <div id="company_field" style="display: none;">
                                 <label class="block text-sm text-gray-600 mb-1">Nama Perusahaan</label>
-                                <input name="company_name" value="{{ old('company_name') }}" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F53003] focus:border-transparent" />
+                                <input name="company_name" value="{{ old('company_name') }}" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" />
                             </div>
 
                             <div>
                                 <label class="block text-sm text-gray-600 mb-1">Bio Singkat</label>
-                                <textarea name="bio" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F53003] focus:border-transparent" rows="3">{{ old('bio') }}</textarea>
+                                <textarea name="bio" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" rows="3">{{ old('bio') }}</textarea>
                             </div>
                         </div>
                     </div>
 
-                    <button type="submit" class="w-full px-4 py-3 bg-gradient-to-r from-[#F53003] to-[#ff6b3d] text-white rounded-lg font-semibold hover:from-[#d42902] hover:to-[#F53003] transform hover:scale-[1.02] transition duration-200 shadow-lg hover:shadow-xl">
+                    <button type="submit" class="w-full px-4 py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-blue-600 transform hover:scale-[1.02] transition duration-200 shadow-lg hover:shadow-xl">
                         Daftar Sekarang
                     </button>
                 </form>
@@ -185,7 +185,7 @@
                     
                     <p class="text-sm text-gray-600">
                         Sudah punya akun? 
-                        <a href="/login" class="text-[#F53003] font-semibold hover:text-[#d42902] transition duration-200">Login disini</a>
+                        <a href="/login" class="text-blue-600 font-semibold hover:text-blue-700 transition duration-200">Login disini</a>
                     </p>
                 </div>
             </div>
@@ -197,7 +197,7 @@
 
         <!-- Right Side - Illustration -->
         <div class="hidden md:block order-1 md:order-2">
-            <div class="bg-gradient-to-br from-[#F53003] to-[#ff6b3d] p-12 rounded-2xl shadow-2xl">
+            <div class="bg-gradient-to-br from-blue-600 to-blue-500 p-12 rounded-2xl shadow-2xl">
                 <div class="text-white">
                     <div class="mb-8">
                         <svg class="w-20 h-20 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -251,11 +251,11 @@
 
 /* Radio button styling */
 input[type="radio"]:checked + div svg {
-    color: #F53003;
+    color: #2563EB; /* Tailwind blue-600 */
 }
 
 input[type="radio"]:checked + div span {
-    color: #F53003;
+    color: #2563EB; /* Tailwind blue-600 */
 }
 </style>
 

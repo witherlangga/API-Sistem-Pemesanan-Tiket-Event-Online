@@ -12,6 +12,7 @@ Ikuti langkah-langkah berikut untuk menjalankan aplikasi secara lokal:
 1. Clone repository
 
    git clone https://github.com/witherlangga/API-Sistem-Pemesanan-Tiket-Event-Online.git
+   
    cd API-Sistem-Pemesanan-Tiket-Event-Online
 
 2. Install dependency PHP

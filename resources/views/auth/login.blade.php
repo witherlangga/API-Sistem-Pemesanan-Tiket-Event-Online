@@ -5,7 +5,7 @@
     <div class="max-w-6xl w-full grid md:grid-cols-2 gap-8 items-center">
         <!-- Left Side - Illustration -->
         <div class="hidden md:block">
-            <div class="bg-gradient-to-br from-[#F53003] to-[#ff6b3d] p-12 rounded-2xl shadow-2xl">
+            <div class="bg-gradient-to-br from-blue-600 to-blue-500 p-12 rounded-2xl shadow-2xl">
                 <div class="text-white">
                     <div class="mb-8">
                         <svg class="w-20 h-20 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -42,7 +42,7 @@
         <div class="w-full">
             <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-2xl transform transition-all duration-300 hover:shadow-3xl">
                 <div class="text-center mb-8">
-                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#F53003] to-[#ff6b3d] rounded-full mb-4 shadow-lg">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-500 rounded-full mb-4 shadow-lg">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                         </svg>
@@ -85,7 +85,7 @@
                                 name="email" 
                                 type="email"
                                 value="{{ old('email') }}" 
-                                class="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F53003] focus:border-transparent transition duration-200" 
+                                class="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition duration-200" 
                                 placeholder="nama@email.com"
                                 required
                             />
@@ -103,7 +103,7 @@
                             <input 
                                 name="password" 
                                 type="password" 
-                                class="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F53003] focus:border-transparent transition duration-200" 
+                                class="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition duration-200" 
                                 placeholder="Masukkan password"
                                 required
                             />
@@ -112,13 +112,13 @@
 
                     <div class="flex items-center justify-between">
                         <label class="flex items-center cursor-pointer">
-                            <input type="checkbox" name="remember" class="w-4 h-4 rounded border-gray-300 text-[#F53003] focus:ring-[#F53003] cursor-pointer">
+                            <input type="checkbox" name="remember" class="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600 cursor-pointer">
                             <span class="ml-2 text-sm text-gray-600 select-none">Ingat saya</span>
                         </label>
-                        <a href="#" class="text-sm font-medium text-[#F53003] hover:text-[#d42902] transition duration-200">Lupa password?</a>
+                        <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-700 transition duration-200">Lupa password?</a>
                     </div>
 
-                    <button type="submit" class="w-full px-4 py-3 bg-gradient-to-r from-[#F53003] to-[#ff6b3d] text-white rounded-lg font-semibold hover:from-[#d42902] hover:to-[#F53003] transform hover:scale-[1.02] transition duration-200 shadow-lg hover:shadow-xl">
+                    <button type="submit" class="w-full px-4 py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-blue-600 transform hover:scale-[1.02] transition duration-200 shadow-lg hover:shadow-xl">
                         Masuk Sekarang
                     </button>
                 </form>
@@ -135,7 +135,7 @@
                     
                     <p class="text-sm text-gray-600">
                         Belum punya akun? 
-                        <a href="/register" class="text-[#F53003] font-semibold hover:text-[#d42902] transition duration-200">Daftar disini</a>
+                        <a href="/register" class="text-blue-600 font-semibold hover:text-blue-700 transition duration-200">Daftar disini</a>
                     </p>
                 </div>
             </div>
